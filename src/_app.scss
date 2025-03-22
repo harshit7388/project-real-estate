@@ -1,0 +1,23 @@
+.heading {
+    font-size: 20px; // Increased font size
+    font-weight: 500;
+    color: #222; // Default text color
+    text-align: left; // Align text to the left
+    margin-left: 50px; // Shift text to the left
+    font-family: sans-serif;
+    
+    .highlight {
+      color: #6c5bfc; // Purple/blue color for "Perfect"
+    }
+  }
+  .location-notice{
+    font-size: 18px;
+    text-align: center;
+    font-family: sans-serif;
+    color: black;
+    // font-weight: bold;
+  }
+  .location-notice-city{
+    color: #5b49ff;
+    font-weight: bold;
+  }
