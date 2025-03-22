@@ -8,7 +8,7 @@ export const budgetOptions = [
   
   export const locationOptions = ["Delhi", "Mumbai", "Bangalore", "Hyderabad", "Chennai"];
   
-  export const amenitiesOptions = ["WiFi", "Parking", "Furnished", "Gym", "Swimming Pool"];
+  export const amenitiesOptions = ["WiFi", "Parking", "Furnished"];
   
   export const propertyTypeOptions = [
     { label: "PG (With Food)", value: "pg-food" },

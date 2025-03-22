@@ -1,98 +1,127 @@
-// src/components/Filters.js
 import React, { useState } from "react";
 import "../styles/components/_filters.scss";
-import {
-  budgetOptions,
-  locationOptions,
-  amenitiesOptions,
-  propertyTypeOptions,
-  livingTypeOptions,
-} from "../data/filterOptions";
 
-const Filters = ({ onFilterChange }) => {
-  const [filters, setFilters] = useState({
-    budget: "",
-    location: "",
-    amenities: [],
-    propertyType: "",
-    livingType: "",
-  });
+const Filters = () => {
+  const [activeTab, setActiveTab] = useState("");
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    
-    if (type === "checkbox") {
-      setFilters((prev) => ({
-        ...prev,
-        amenities: checked
-          ? [...prev.amenities, value]
-          : prev.amenities.filter((item) => item !== value),
-      }));
-    } else {
-      setFilters((prev) => ({ ...prev, [name]: value }));
-    }
-    
-    onFilterChange({ ...filters, [name]: value });
+  // Filter options stored in an object for better maintainability
+  const filterOptions = {
+    location: [
+      { label: "Gurgaon", options: ["Sector 45", "Sector 57", "Ardee City"] },
+    ],
+    propertyType: [
+      { label: "PG", options: ["PG with Food", "PG without Food"] },
+      { label: "Room Kitchen Set", options: ["1 RK", "2 RK"] },
+      { label: "BHK", options: ["1 BHK", "2 BHK"] },
+    ],
+    priceRange: ["₹ 5k - ₹ 10k", "₹ 10k - ₹ 15k", "₹ 15k - ₹ 20k", "₹ 20k +"],
+    livingType: ["For Girls Only", "For Boys Only", "Co-living"],
+    amenities: ["WiFi", "Parking", "Furnished"],
+  };
+
+  // Function to toggle amenity selection
+  const toggleAmenity = (amenity) => {
+    setSelectedAmenities((prev) =>
+      prev.includes(amenity)
+        ? prev.filter((item) => item !== amenity)
+        : [...prev, amenity]
+    );
   };
 
   return (
     <div className="filters">
-      <h3>Filter Properties</h3>
-
-      <label>Budget:</label>
-      <select name="budget" value={filters.budget} onChange={handleChange}>
-        <option value="">Select Budget</option>
-        {budgetOptions.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
+      {/* Tab Section */}
+      <div className="filter-tabs" style={{display:"none"}}>
+        {["Buy", "Sell", "Rent"].map((tab) => (
+          <button
+            key={tab}
+            className={activeTab === tab ? "active" : ""}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab}
+          </button>
         ))}
-      </select>
+      </div>
 
-      <label>Location:</label>
-      <select name="location" value={filters.location} onChange={handleChange}>
-        <option value="">Select Location</option>
-        {locationOptions.map((loc) => (
-          <option key={loc} value={loc}>
-            {loc}
-          </option>
-        ))}
-      </select>
+       {/* Message instead of Tabs */}
+       <div className="filter-message">
+        <p>We deal in rental properties only !!</p> 
+      </div>
 
-      <label>Property Type:</label>
-      <select name="propertyType" value={filters.propertyType} onChange={handleChange}>
-        <option value="">Select Type</option>
-        {propertyTypeOptions.map((type) => (
-          <option key={type.value} value={type.value}>
-            {type.label}
-          </option>
-        ))}
-      </select>
+      {/* Filter Options Section */}
+      <div className="filter-options">
+        {/* Location Filter */}
+        <div className="filter-group">
+          <label>Location</label>
+          <select>
+            {filterOptions.location.map((group, index) => (
+              <optgroup key={index} label={group.label}>
+                {group.options.map((option, idx) => (
+                  <option key={idx} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+        </div>
 
-      <label>Living Type:</label>
-      <select name="livingType" value={filters.livingType} onChange={handleChange}>
-        <option value="">Select Living Type</option>
-        {livingTypeOptions.map((type) => (
-          <option key={type} value={type}>
-            {type}
-          </option>
-        ))}
-      </select>
+        {/* Property Type Filter */}
+        <div className="filter-group">
+          <label>Property Type</label>
+          <select>
+            {filterOptions.propertyType.map((group, index) => (
+              <optgroup key={index} label={group.label}>
+                {group.options.map((option, idx) => (
+                  <option key={idx} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+        </div>
 
-      <label>Amenities:</label>
-      <div className="amenities">
-        {amenitiesOptions.map((amenity) => (
-          <label key={amenity}>
-            <input
-              type="checkbox"
-              name="amenities"
-              value={amenity}
-              checked={filters.amenities.includes(amenity)}
-              onChange={handleChange}
-            />
-            {amenity}
-          </label>
-        ))}
+        {/* Price Range Filter */}
+        <div className="filter-group">
+          <label>Price Range</label>
+          <select>
+            {filterOptions.priceRange.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Living Type Filter */}
+        <div className="filter-group">
+          <label>Living Type</label>
+          <select>
+            {filterOptions.livingType.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Amenities Section */}
+        <div className="amenities">
+          {filterOptions.amenities.map((amenity) => (
+            <label
+              key={amenity}
+              className={selectedAmenities.includes(amenity) ? "selected" : ""}
+              onClick={() => toggleAmenity(amenity)}
+            >
+              {amenity}
+            </label>
+          ))}
+        </div>
+
+        {/* Search Button */}
+        <button className="search-button">&#128269;Search</button>
       </div>
     </div>
   );
