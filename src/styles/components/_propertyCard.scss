@@ -1,0 +1,61 @@
+.property-card {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  
+    .property-info {
+      padding: 15px;
+  
+      h3 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 14px;
+        margin: 5px 0;
+        color: #555;
+      }
+  
+      .whatsapp-button {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px;
+        background: #25D366;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+  
+  /* 📱 Responsive Design */
+  @media (max-width: 768px) {
+    .property-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .property-card {
+      width: 90%;
+    }
+  }
+  
