@@ -46,7 +46,7 @@ const Filters = () => {
 
        {/* Message instead of Tabs */}
        <div className="filter-message">
-        <p>We deal in rental properties only !!</p> 
+        <p>We deal in rental properties only !!</p>
       </div>
 
       {/* Filter Options Section */}
