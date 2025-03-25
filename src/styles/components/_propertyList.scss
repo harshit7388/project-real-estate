@@ -1,14 +1,32 @@
+.property-list-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
 .property-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mobile-view {
+  display: none; // Hide mobile carousel by default
+}
+
+/* Show carousel only on mobile */
+@media (max-width: 768px) {
+  .property-list {
+    display: none; // Hide normal list on mobile
+  }
+  .mobile-view {
+    display: block;
+    width: 100%;
+  }
+
+  .slick-slide {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
   }
-  
-  .no-results {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: red;
-  }
-  
+}

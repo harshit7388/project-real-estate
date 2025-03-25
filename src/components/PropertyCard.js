@@ -1,31 +1,72 @@
 import React from "react";
+import Slider from "react-slick"; // Import React Slick
+import "slick-carousel/slick/slick.css"; // Import Slick Styles
+import "slick-carousel/slick/slick-theme.css";
+import { FaUserCircle } from "react-icons/fa";
+import { FaWifi, FaParking } from "react-icons/fa"; // Import icons
+import { FaWhatsapp, FaPhone } from "react-icons/fa";
 import "../styles/components/_propertyCard.scss";
 
-const PropertyCard = ({ property, filters }) => {
-  // Generate a WhatsApp message with property details and user-selected filters
-  const generateWhatsAppMessage = () => {
-    const message = `Hello, I'm interested in the property "${property.title}".\n\nProperty Details:\n- Location: ${property.location}\n- Price: ${property.price}\n- Living Type: ${property.livingType}\n- Property Type: ${property.propertyType}\n- Amenities: ${property.amenities.join(", ")}\n\nMy Selected Filters:\n- Location: ${filters.location || "Any"}\n- Price Range: ${filters.priceRange || "Any"}\n- Living Type: ${filters.livingType || "Any"}\n- Property Type: ${filters.propertyType || "Any"}\n- Amenities: ${
-      filters.amenities.length > 0 ? filters.amenities.join(", ") : "Any"
-    }`;
-
-    return encodeURIComponent(message);
+const PropertyCard = ({ property }) => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false, // Remove next/prev buttons for a clean UI
+    // autoplay: true,
+    autoplaySpeed: 3000,
   };
-
-  const whatsappUrl = `https://wa.me/${property.ownerPhone}?text=${generateWhatsAppMessage()}`;
 
   return (
     <div className="property-card">
-      <img src={property.image} alt={property.title} />
-      <div className="property-info">
+      {/* Image Carousel */}
+      <div className="property-image">
+      <Slider {...settings}>
+      {property.images && property.images.length > 0 ? (
+        property.images.map((img, index) => (
+          <img key={index} src={img} alt={`Property ${index + 1}`} />
+        ))
+      ) : (
+        <img src="https://via.placeholder.com/300x200?text=No+Image" alt="Default Property" />
+      )}
+    </Slider>
+      </div>
+
+      {/* Property Details */}
+      <div className="property-details">
         <h3>{property.title}</h3>
-        <p><strong>Location:</strong> {property.location}</p>
-        <p><strong>Price:</strong> {property.price}</p>
-        <p><strong>Living Type:</strong> {property.livingType}</p>
-        <p><strong>Property Type:</strong> {property.propertyType}</p>
-        <p><strong>Amenities:</strong> {property.amenities.join(", ")}</p>
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="whatsapp-button">
-          📲 Contact via WhatsApp
-        </a>
+        <div className="location">📍 {property.location}</div>
+        <div className="price">₹ {property.price}</div>
+
+        {/* Property Type & Living Type */}
+        <div className="property-meta">
+          <span>{property.propertyType}</span>
+          <span>{property.livingType}</span>
+        </div>
+
+        {/* Amenities Icons */}
+        <div className="amenities">
+          {property.amenities.includes("WiFi") && <FaWifi />}
+          {property.amenities.includes("Parking") && <FaParking />}
+        </div>
+      </div>
+
+      {/* Footer (Owner Info & Contact Buttons) */}
+      <div className="property-footer">
+        <div className="owner-info">
+          <FaUserCircle className="owner-icon" />
+          <span className="owner-name">{property.ownerName || "Owner"}</span>
+        </div>
+        <div className="contact-icons">
+          <a href={`https://wa.me/${property.ownerPhone}`} target="_blank" rel="noopener noreferrer">
+            <FaWhatsapp className="whatsapp-icon" />
+          </a>
+          <a href={`tel:${property.ownerPhone}`}>
+            <FaPhone className="phone-icon" />
+          </a>
+        </div>
       </div>
     </div>
   );

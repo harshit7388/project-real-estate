@@ -2,6 +2,10 @@
 import React, { useState ,useEffect} from 'react';
 import PropertyCard from './PropertyCard';
 import '../styles/components/_propertyList.scss';
+import Slider from "react-slick"; // Import Slick Carousel
+import "slick-carousel/slick/slick.css"; // Import Slick Styles
+import "slick-carousel/slick/slick-theme.css";
+
 const propertiesData = [
   {
     id: 1,
@@ -11,7 +15,12 @@ const propertiesData = [
     propertyType: "PG with Food",
     livingType: "For Girls Only",
     amenities: ["WiFi", "Parking"],
-    image: "https://source.unsplash.com/300x200/?apartment,room",
+    images: [
+      "https://picsum.photos/id/1018/300/200",
+      "https://picsum.photos/id/1015/300/200",
+      "https://picsum.photos/id/1020/300/200",
+    ],
+    ownerName: "Rahul Sharma",
     ownerPhone: "9876543210",
   },
   {
@@ -22,7 +31,12 @@ const propertiesData = [
     propertyType: "1 BHK",
     livingType: "Co-living",
     amenities: ["WiFi", "Furnished"],
-    image: "https://source.unsplash.com/300x200/?house,flat",
+    images: [
+      "https://picsum.photos/id/1018/300/200",
+      "https://picsum.photos/id/1015/300/200",
+      "https://picsum.photos/id/1020/300/200",
+    ],
+    ownerName: "Rohit Singh",
     ownerPhone: "9876543211",
   },
   {
@@ -33,7 +47,13 @@ const propertiesData = [
     propertyType: "2 RK",
     livingType: "For Boys Only",
     amenities: ["Parking", "Furnished"],
-    image: "https://source.unsplash.com/300x200/?room,interior",
+    // image: "https://picsum.photos/seed/picsum/200/300",
+    images: [
+      "https://picsum.photos/id/1018/300/200",
+      "https://picsum.photos/id/1015/300/200",
+      "https://picsum.photos/id/1020/300/200",
+    ],
+    ownerName: "Rajesh Kumar",
     ownerPhone: "9876543212",
   },
   {
@@ -44,7 +64,12 @@ const propertiesData = [
     propertyType: "PG without Food",
     livingType: "For Girls Only",
     amenities: ["WiFi", "Furnished"],
-    image: "https://source.unsplash.com/300x200/?pg,accommodation",
+    images: [
+      "https://picsum.photos/id/1018/300/200",
+      "https://picsum.photos/id/1015/300/200",
+      "https://picsum.photos/id/1020/300/200",
+    ],
+    ownerName: "Rajat Verma",
     ownerPhone: "9876543213",
   },
   {
@@ -56,7 +81,12 @@ const propertiesData = [
     propertyType: "2 BHK",
     livingType: "Co-living",
     amenities: ["WiFi", "Parking", "Furnished"],
-    image: "https://source.unsplash.com/300x200/?apartment,building",
+    images: [
+      "https://picsum.photos/id/1018/300/200",
+      "https://picsum.photos/id/1015/300/200",
+      "https://picsum.photos/id/1020/300/200",
+    ],
+    ownerName: "Rakesh Tiwari",
     ownerPhone: "9876543214",
   },
 ]
@@ -77,16 +107,43 @@ const PropertyList = ({filters}) => {
         )
     });
     
-    return(
-        <div className="property-list">
-        {filteredProperties.length > 0 ? (
-          filteredProperties.map((x) => (
-            <PropertyCard key={x.id} property={x} filters={filters} />
-          ))
-        ) : (
-          <p className="no-results">No properties match your filters.</p>
-        )}
-      </div>
-    );
+        // Slick Carousel Settings (Mobile Only)
+      const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        swipeToSlide: true,
+      };
+
+      return (
+        <div className="property-list-container">
+          {/* Desktop View: Normal List */}
+          <div className="property-list desktop-view">
+            {filteredProperties.length > 0 ? (
+              filteredProperties.map((x) => (
+                <PropertyCard key={x.id} property={x} filters={filters} />
+              ))
+            ) : (
+              <p className="no-results">No properties match your filters.</p>
+            )}
+          </div>
+    
+          {/* Mobile View: Carousel */}
+          <div className="mobile-view">
+            <Slider {...settings}>
+              {filteredProperties.length > 0 ? (
+                filteredProperties.map((x) => (
+                  <PropertyCard key={x.id} property={x} filters={filters} />
+                ))
+              ) : (
+                <p className="no-results">No properties match your filters.</p>
+              )}
+            </Slider>
+          </div>
+        </div>
+      );
 }
 export default PropertyList;
