@@ -21,3 +21,32 @@
     color: #5b49ff;
     font-weight: bold;
   }
+
+
+  @media screen and (max-width: 768px) {
+    .heading {
+        font-size: 15px; // Increased font size
+        font-weight: 500;
+        color: #222; // Default text color
+        text-align: left; // Align text to the left
+        margin-left: 50px; // Shift text to the left
+        font-family: sans-serif;
+        
+        .highlight {
+          color: #6c5bfc; // Purple/blue color for "Perfect"
+        }
+      }
+      .location-notice{
+        font-size: 18px;
+        text-align: center;
+        font-family: sans-serif;
+        color: black;
+        margin-top: 503px;
+        margin-right: 29px;
+      }
+      .location-notice-city{
+        color: #5b49ff;
+        font-weight: bold;
+      }
+  }
+  

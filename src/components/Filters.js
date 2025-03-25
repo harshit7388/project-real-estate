@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import "../styles/components/_filters.scss";
 
-const Filters = () => {
+const Filters = ({onFilterChange}) => {
   const [activeTab, setActiveTab] = useState("");
   const [selectedAmenities, setSelectedAmenities] = useState([]);
+  const [filters, setFilters] = useState({
+    location: "",
+    propertyType: "",
+    priceRange: "",
+    livingType: "",
+    amenities: [],
+  });
 
   // Filter options stored in an object for better maintainability
   const filterOptions = {
@@ -15,9 +22,15 @@ const Filters = () => {
       { label: "Room Kitchen Set", options: ["1 RK", "2 RK"] },
       { label: "BHK", options: ["1 BHK", "2 BHK"] },
     ],
-    priceRange: ["₹ 5k - ₹ 10k", "₹ 10k - ₹ 15k", "₹ 15k - ₹ 20k", "₹ 20k +"],
+    priceRange: ["5000-10000", "10000-15000", "15000-20000", "20000+"],
+
     livingType: ["For Girls Only", "For Boys Only", "Co-living"],
     amenities: ["WiFi", "Parking", "Furnished"],
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
   // Function to toggle amenity selection
@@ -28,11 +41,15 @@ const Filters = () => {
         : [...prev, amenity]
     );
   };
+  const handleSearch = () => {
+    const updatedFilters = { ...filters, amenities: selectedAmenities }; 
+    onFilterChange(updatedFilters); 
+  };
 
   return (
     <div className="filters">
       {/* Tab Section */}
-      <div className="filter-tabs" style={{display:"none"}}>
+      {/* <div className="filter-tabs" style={{display:"none"}}>
         {["Buy", "Sell", "Rent"].map((tab) => (
           <button
             key={tab}
@@ -42,11 +59,11 @@ const Filters = () => {
             {tab}
           </button>
         ))}
-      </div>
+      </div> */}
 
        {/* Message instead of Tabs */}
        <div className="filter-message">
-        <p>We deal in rental properties only !!</p> 
+        <p>We deal in rental properties only !!</p>
       </div>
 
       {/* Filter Options Section */}
@@ -54,7 +71,7 @@ const Filters = () => {
         {/* Location Filter */}
         <div className="filter-group">
           <label>Location</label>
-          <select>
+          <select name="location" value={filters.location} onChange={handleChange}>
             {filterOptions.location.map((group, index) => (
               <optgroup key={index} label={group.label}>
                 {group.options.map((option, idx) => (
@@ -70,7 +87,7 @@ const Filters = () => {
         {/* Property Type Filter */}
         <div className="filter-group">
           <label>Property Type</label>
-          <select>
+          <select name="propertyType" value={filters.propertyType} onChange={handleChange}>
             {filterOptions.propertyType.map((group, index) => (
               <optgroup key={index} label={group.label}>
                 {group.options.map((option, idx) => (
@@ -86,7 +103,7 @@ const Filters = () => {
         {/* Price Range Filter */}
         <div className="filter-group">
           <label>Price Range</label>
-          <select>
+          <select name="priceRange" value={filters.priceRange} onChange={handleChange}>
             {filterOptions.priceRange.map((option, index) => (
               <option key={index} value={option}>
                 {option}
@@ -98,7 +115,7 @@ const Filters = () => {
         {/* Living Type Filter */}
         <div className="filter-group">
           <label>Living Type</label>
-          <select>
+          <select name="livingType" value={filters.livingType} onChange={handleChange}>
             {filterOptions.livingType.map((option, index) => (
               <option key={index} value={option}>
                 {option}
@@ -121,7 +138,7 @@ const Filters = () => {
         </div>
 
         {/* Search Button */}
-        <button className="search-button">&#128269;Search</button>
+        <button className="search-button" onClick={handleSearch}>&#128269;Search</button>
       </div>
     </div>
   );

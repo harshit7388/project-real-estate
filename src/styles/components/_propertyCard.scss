@@ -1,0 +1,126 @@
+.property-card {
+  width: 300px; // Reduced size for better fit
+  max-width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .property-image {
+    width: 100%;
+    height: 180px; // Ensure carousel fits
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+
+  .property-details {
+    padding: 10px; // Adjusted for smaller size
+
+    h3 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+      white-space: nowrap; 
+      overflow: hidden;
+      text-overflow: ellipsis; // Prevents name from being hidden
+    }
+
+    .location {
+      font-size: 13px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff5722; // Changed color for better visibility
+      margin-top: 5px;
+    }
+  }
+
+  .property-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f9f9f9;
+    border-top: 1px solid #ddd;
+
+    .owner-info {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .owner-icon {
+        font-size: 18px;
+        color: #555;
+      }
+    }
+
+    .contact-icons {
+      display: flex;
+      gap: 10px;
+
+      a {
+        font-size: 18px;
+        color: #25d366; // WhatsApp green
+        font-weight: bold;
+
+        &:last-child {
+          color: #000; // Black for call
+        }
+      }
+    }
+  }
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+  .property-card {
+    width: 90%;
+    height: auto;
+    margin-right: 28px;
+  }
+
+  .property-image {
+    height: 150px; // Smaller image for mobile
+  }
+
+  .property-details {
+    padding: 8px;
+
+    h3 {
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .price {
+      font-size: 16px;
+    }
+  }
+}
