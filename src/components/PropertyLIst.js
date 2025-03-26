@@ -2,10 +2,6 @@
 import React, { useState ,useEffect} from 'react';
 import PropertyCard from './PropertyCard';
 import '../styles/components/_propertyList.scss';
-import Slider from "react-slick"; // Import Slick Carousel
-import "slick-carousel/slick/slick.css"; // Import Slick Styles
-import "slick-carousel/slick/slick-theme.css";
-
 const propertiesData = [
   {
     id: 1,
@@ -118,32 +114,16 @@ const PropertyList = ({filters}) => {
         swipeToSlide: true,
       };
 
-      return (
-        <div className="property-list-container">
-          {/* Desktop View: Normal List */}
-          <div className="property-list desktop-view">
-            {filteredProperties.length > 0 ? (
-              filteredProperties.map((x) => (
-                <PropertyCard key={x.id} property={x} filters={filters} />
-              ))
-            ) : (
-              <p className="no-results">No properties match your filters.</p>
-            )}
-          </div>
-    
-          {/* Mobile View: Carousel */}
-          <div className="mobile-view">
-            <Slider {...settings}>
-              {filteredProperties.length > 0 ? (
-                filteredProperties.map((x) => (
-                  <PropertyCard key={x.id} property={x} filters={filters} />
-                ))
-              ) : (
-                <p className="no-results">No properties match your filters.</p>
-              )}
-            </Slider>
-          </div>
-        </div>
-      );
+    return(
+        <div className="property-list">
+        {filteredProperties.length > 0 ? (
+          filteredProperties.map((x) => (
+            <PropertyCard key={x.id} property={x} filters={filters} />
+          ))
+        ) : (
+          <p className="no-results">No properties match your filters.</p>
+        )}
+      </div>
+    );
 }
 export default PropertyList;
