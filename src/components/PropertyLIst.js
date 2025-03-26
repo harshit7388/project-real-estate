@@ -2,10 +2,6 @@
 import React, { useState ,useEffect} from 'react';
 import PropertyCard from './PropertyCard';
 import '../styles/components/_propertyList.scss';
-import Slider from "react-slick"; // Import Slick Carousel
-import "slick-carousel/slick/slick.css"; // Import Slick Styles
-import "slick-carousel/slick/slick-theme.css";
-
 const propertiesData = [
   {
     id: 1,
@@ -21,14 +17,14 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rahul Sharma",
-    ownerPhone: "9876543210",
+    ownerPhone: "7388670069",
   },
   {
     id: 2,
     title: "1 BHK in Ardee City",
     location: "Ardee City",
     price: "18000",
-    propertyType: "1 BHK",
+    propertyType: "1BHK",
     livingType: "Co-living",
     amenities: ["WiFi", "Furnished"],
     images: [
@@ -37,7 +33,7 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rohit Singh",
-    ownerPhone: "9876543211",
+    ownerPhone: "7388670069",
   },
   {
     id: 3,
@@ -54,7 +50,7 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rajesh Kumar",
-    ownerPhone: "9876543212",
+    ownerPhone: "7388670069",
   },
   {
     id: 4,
@@ -70,7 +66,7 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rajat Verma",
-    ownerPhone: "9876543213",
+    ownerPhone: "7388670069",
   },
   {
     id: 5,
@@ -87,7 +83,7 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rakesh Tiwari",
-    ownerPhone: "9876543214",
+    ownerPhone: "7388670069",
   },
 ]
 
@@ -118,32 +114,16 @@ const PropertyList = ({filters}) => {
         swipeToSlide: true,
       };
 
-      return (
-        <div className="property-list-container">
-          {/* Desktop View: Normal List */}
-          <div className="property-list desktop-view">
-            {filteredProperties.length > 0 ? (
-              filteredProperties.map((x) => (
-                <PropertyCard key={x.id} property={x} filters={filters} />
-              ))
-            ) : (
-              <p className="no-results">No properties match your filters.</p>
-            )}
-          </div>
-    
-          {/* Mobile View: Carousel */}
-          <div className="mobile-view">
-            <Slider {...settings}>
-              {filteredProperties.length > 0 ? (
-                filteredProperties.map((x) => (
-                  <PropertyCard key={x.id} property={x} filters={filters} />
-                ))
-              ) : (
-                <p className="no-results">No properties match your filters.</p>
-              )}
-            </Slider>
-          </div>
-        </div>
-      );
+    return(
+        <div className="property-list">
+        {filteredProperties.length > 0 ? (
+          filteredProperties.map((x) => (
+            <PropertyCard key={x.id} property={x} filters={filters} />
+          ))
+        ) : (
+          <p className="no-results">No properties match your filters.</p>
+        )}
+      </div>
+    );
 }
 export default PropertyList;
