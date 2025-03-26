@@ -1,5 +1,5 @@
 .property-card {
-  width: 300px; // Reduced size for better fit
+  width: 300px; 
   max-width: 100%;
   border-radius: 10px;
   overflow: hidden;
@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   margin-right: 15px;
+  border: 1px solid #d2c0c0; 
+
 
   &:hover {
     transform: translateY(-5px);
@@ -16,7 +18,7 @@
 
   .property-image {
     width: 100%;
-    height: 180px; // Ensure carousel fits
+    height: 180px; 
     position: relative;
     overflow: hidden;
 
@@ -30,7 +32,7 @@
   }
 
   .property-details {
-    padding: 10px; // Adjusted for smaller size
+    padding: 10px; 
 
     h3 {
       font-size: 16px;
@@ -39,7 +41,7 @@
       margin-bottom: 5px;
       white-space: nowrap; 
       overflow: hidden;
-      text-overflow: ellipsis; // Prevents name from being hidden
+      text-overflow: ellipsis; 
     }
 
     .location {
@@ -53,7 +55,7 @@
     .price {
       font-size: 18px;
       font-weight: bold;
-      color: #ff5722; // Changed color for better visibility
+      color: #5b49ff; 
       margin-top: 5px;
     }
   }
@@ -86,27 +88,32 @@
 
       a {
         font-size: 18px;
-        color: #25d366; // WhatsApp green
+        color: #25d366; 
         font-weight: bold;
 
         &:last-child {
-          color: #000; // Black for call
+          color: #000; 
         }
       }
     }
   }
 }
 
-/* 📱 Mobile Responsive */
+//mobile styles
 @media (max-width: 768px) {
   .property-card {
     width: 90%;
     height: auto;
-    margin-right: 28px;
+    margin: 15px -6px; 
+
+  }
+   /* Adds margin above the first card */
+  .property-list .property-card:first-child {
+    margin-top: 15px;
   }
 
   .property-image {
-    height: 150px; // Smaller image for mobile
+    height: 150px; 
   }
 
   .property-details {
@@ -120,7 +127,31 @@
     }
 
     .price {
-      font-size: 16px;
+      font-size: 13px;
     }
   }
+}
+
+.propertyType{
+  font-size: 13px;
+}
+.livingType{
+  font-size: 13px;
+}
+
+.amenities .wifi{
+  margin-right: 7px;
+}
+
+.property-meta .livingType{
+  background-color: #ececec;
+  border-radius: 10px;
+  padding: 2px 5px;
+}
+.property-meta .propertyType{
+  margin-right: 10px;
+}
+
+.property-meta{
+  padding: 3px 0;
 }

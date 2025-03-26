@@ -17,14 +17,14 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rahul Sharma",
-    ownerPhone: "9876543210",
+    ownerPhone: "7388670069",
   },
   {
     id: 2,
     title: "1 BHK in Ardee City",
     location: "Ardee City",
     price: "18000",
-    propertyType: "1 BHK",
+    propertyType: "1BHK",
     livingType: "Co-living",
     amenities: ["WiFi", "Furnished"],
     images: [
@@ -33,7 +33,7 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rohit Singh",
-    ownerPhone: "9876543211",
+    ownerPhone: "7388670069",
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rajesh Kumar",
-    ownerPhone: "9876543212",
+    ownerPhone: "7388670069",
   },
   {
     id: 4,
@@ -66,7 +66,7 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rajat Verma",
-    ownerPhone: "9876543213",
+    ownerPhone: "7388670069",
   },
   {
     id: 5,
@@ -83,7 +83,7 @@ const propertiesData = [
       "https://picsum.photos/id/1020/300/200",
     ],
     ownerName: "Rakesh Tiwari",
-    ownerPhone: "9876543214",
+    ownerPhone: "7388670069",
   },
 ]
 

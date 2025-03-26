@@ -2,12 +2,14 @@ import React from "react";
 import Slider from "react-slick"; // Import React Slick
 import "slick-carousel/slick/slick.css"; // Import Slick Styles
 import "slick-carousel/slick/slick-theme.css";
-import { FaUserCircle } from "react-icons/fa";
+import { FaCar, FaHome, FaUserCircle } from "react-icons/fa";
 import { FaWifi, FaParking } from "react-icons/fa"; // Import icons
 import { FaWhatsapp, FaPhone } from "react-icons/fa";
 import "../styles/components/_propertyCard.scss";
+import Filters from "./Filters";
 
 const PropertyCard = ({ property }) => {
+  const message = encodeURIComponent(`Hi, I am interested in your property: ${property.title}. My preferrences are: - ${property.location} , ${property.price} , ${property.propertyType} , ${property.livingType}`); ;
   const settings = {
     dots: true,
     infinite: true,
@@ -42,14 +44,14 @@ const PropertyCard = ({ property }) => {
 
         {/* Property Type & Living Type */}
         <div className="property-meta">
-          <span>{property.propertyType}</span>
-          <span>{property.livingType}</span>
+          <span className="propertyType">{property.propertyType}</span> 
+          <span className="livingType">{property.livingType}</span>
         </div>
 
         {/* Amenities Icons */}
         <div className="amenities">
-          {property.amenities.includes("WiFi") && <FaWifi />}
-          {property.amenities.includes("Parking") && <FaParking />}
+          <span className="wifi">{property.amenities.includes("WiFi") && <FaWifi />}</span>
+          <span className="parking">{property.amenities.includes("Parking") && <FaCar />}</span>
         </div>
       </div>
 
@@ -60,7 +62,7 @@ const PropertyCard = ({ property }) => {
           <span className="owner-name">{property.ownerName || "Owner"}</span>
         </div>
         <div className="contact-icons">
-          <a href={`https://wa.me/${property.ownerPhone}`} target="_blank" rel="noopener noreferrer">
+          <a href={`https://wa.me/+91${property.ownerPhone}?text=${message}`} target="_blank" rel="noopener noreferrer">
             <FaWhatsapp className="whatsapp-icon" />
           </a>
           <a href={`tel:${property.ownerPhone}`}>

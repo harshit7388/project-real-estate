@@ -11,4 +11,10 @@
     font-weight: bold;
     color: red;
   }
-  
+//for mobile
+@media (max-width: 768px) {
+  .property-list {
+    flex-direction: column; 
+  }
+}
+
