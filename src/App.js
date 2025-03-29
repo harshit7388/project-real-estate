@@ -4,6 +4,7 @@ import '../src/_app.scss'
 import PropertyList from "../src/components/PropertyList";
 import Footer from "./components/Footer";
 import Popup from './components/Popup';
+// import Navbar from "./components/Navbar";
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -32,17 +33,17 @@ const App = () => {
 
   // Show popup when site loads ,added 10 secs interval to show popup
   useEffect(() => {
-    setShowPopup(true);
-  
-      const interval = setInterval(() => {
-        setShowPopup(true);
-      }, 10000);
-      return () => clearInterval(interval); 
-  },[]);
+    const initialPopupTimer = setTimeout(() => {
+      setShowPopup(true);
+    }, 30000); 
+
+    return () => clearTimeout(initialPopupTimer);
+  }, []);
 
   return (
-    <div>
-      {showPopup && <Popup onClose={() => setShowPopup(false)}/>}
+    <div className="app-container">
+          {/* <Navbar /> */}
+      {showPopup && <Popup onClose={closePopup}/>}
       <div className="heading">
         {/* <h1>Real Estate Property Listings</h1> */}
         <h1>Find <span className="highlight">Perfect</span> Place <br /> To Live Life.</h1>
