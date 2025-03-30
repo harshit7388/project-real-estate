@@ -24,6 +24,7 @@ const Footer = () => {
 
       <div className="footer-legal">
         <p>© {new Date().getFullYear()} MyBrokers.in. All Rights Reserved.</p>
+      	        Built with ❤️ by <span className="highlight">Harshit & Deepanshu</span>
       </div>
     </footer>
   );
