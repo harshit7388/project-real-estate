@@ -2,14 +2,14 @@ import React from "react";
 import Slider from "react-slick"; // Import React Slick
 import "slick-carousel/slick/slick.css"; // Import Slick Styles
 import "slick-carousel/slick/slick-theme.css";
-import { FaCar, FaHome, FaUserCircle } from "react-icons/fa";
-import { FaWifi, FaParking } from "react-icons/fa"; // Import icons
-import { FaWhatsapp, FaPhone } from "react-icons/fa";
+import { FaCar, FaUserCircle } from "react-icons/fa";
+import { FaWifi } from "react-icons/fa"; // Import icons
+import { FaWhatsapp } from "react-icons/fa";
 import "../styles/components/_propertyCard.scss";
-import Filters from "./Filters";
 
 const PropertyCard = ({ property }) => {
   const message = encodeURIComponent(`Hi, I am interested in your property: ${property.title}. My preferrences are: - ${property.location} , ${property.price} , ${property.propertyType} , ${property.livingType}`); ;
+  const whatsappLink = `https://wa.me/+917388670069?text=${message}`;
   const settings = {
     dots: true,
     infinite: true,
@@ -62,12 +62,12 @@ const PropertyCard = ({ property }) => {
           <span className="owner-name">{property.ownerName || "Owner"}</span>
         </div>
         <div className="contact-icons">
-          <a href={`https://wa.me/+91${property.ownerPhone}?text=${message}`} target="_blank" rel="noopener noreferrer">
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
             <FaWhatsapp className="whatsapp-icon" />
           </a>
-          <a href={`tel:${property.ownerPhone}`}>
+          {/* <a href={`tel:${phone}`}>
             <FaPhone className="phone-icon" />
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

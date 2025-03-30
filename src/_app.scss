@@ -1,3 +1,10 @@
+html,body {
+  overflow-x: hidden; // Prevent horizontal scroll
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 .heading {
     font-size: 20px; // Increased font size
     font-weight: 500;

@@ -4,7 +4,9 @@ import '../src/_app.scss'
 import PropertyList from "../src/components/PropertyList";
 import Footer from "./components/Footer";
 import Popup from './components/Popup';
+import WhatsAppButton from "./components/WhatsAppButton";
 // import Navbar from "./components/Navbar";
+// import Banner from './components/Banner'
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -28,7 +30,7 @@ const App = () => {
   // Function to close the popup and set it to reappear after 10 seconds
    const closePopup = () => {
     setShowPopup(false);
-    setTimeout(openPopup, 10000); // Reopen popup after 10 sec
+    setTimeout(openPopup, 30000); // Reopen popup after 10 sec
   };
 
   // Show popup when site loads ,added 10 secs interval to show popup
@@ -48,10 +50,12 @@ const App = () => {
         {/* <h1>Real Estate Property Listings</h1> */}
         <h1>Find <span className="highlight">Perfect</span> Place <br /> To Live Life.</h1>
         <Filters onFilterChange={handleFilterChange} />
+        {/* <Banner /> */}
         <p className="location-notice">Currently available in <span className="location-notice-city">Gurgaon</span> only. Stay tuned for more locations soon. 😊🏡</p>
         <PropertyList filters={filters}></PropertyList>
       </div>
         <Footer></Footer>
+        <WhatsAppButton />
     </div>
   );
 };
