@@ -5,8 +5,7 @@ import PropertyList from "../src/components/PropertyList";
 import Footer from "./components/Footer";
 import Popup from './components/Popup';
 import WhatsAppButton from "./components/WhatsAppButton";
-// import Navbar from "./components/Navbar";
-// import Banner from './components/Banner'
+
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -30,7 +29,7 @@ const App = () => {
   // Function to close the popup and set it to reappear after 10 seconds
    const closePopup = () => {
     setShowPopup(false);
-    setTimeout(openPopup, 30000); // Reopen popup after 10 sec
+    setTimeout(openPopup, 30000); 
   };
 
   // Show popup when site loads ,added 10 secs interval to show popup
@@ -40,14 +39,27 @@ const App = () => {
     }, 30000); 
 
     return () => clearTimeout(initialPopupTimer);
+    
   }, []);
+
+  // useEffect(() => {
+  //   const whenuserleavespage = (event) => {
+  //     if (event.clientY < 10) {
+  //       setShowExitPopup(true);
+  //     }
+  //   };
+
+  //   document.addEventListener("mouseleave", whenuserleavespage);
+  //   return () => document.removeEventListener("mouseleave", whenuserleavespage);
+  // }, []);
+
 
   return (
     <div className="app-container">
-          {/* <Navbar /> */}
+      {/* {showExitPopup && <ExitPopup onClose={()=>setShowExitPopup(false)}/>} */}
       {showPopup && <Popup onClose={closePopup}/>}
+      {/* <Navbar></Navbar> */}
       <div className="heading">
-        {/* <h1>Real Estate Property Listings</h1> */}
         <h1>Find <span className="highlight">Perfect</span> Place <br /> To Live Life.</h1>
         <Filters onFilterChange={handleFilterChange} />
         {/* <Banner /> */}
