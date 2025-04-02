@@ -17,7 +17,7 @@ const PropertyCard = ({ property }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false, // Remove next/prev buttons for a clean UI
-    // autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
   };
 
@@ -33,6 +33,16 @@ const PropertyCard = ({ property }) => {
       ) : (
         <img src="https://via.placeholder.com/300x200?text=No+Image" alt="Default Property" />
       )}
+      
+       {/* Render Video if available */}
+          {property.video && (
+            <div className="video-container">
+              <video controls width="100%" height="auto">
+                <source src={property.video} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          )}
     </Slider>
       </div>
 

@@ -73,7 +73,7 @@ const Filters = ({onFilterChange}) => {
         <div className="filter-group">
           <label>Location</label>
           <select name="location" value={filters.location} onChange={handleChange}>
-            <option value="">Select Location</option> {/* ✅ Added Placeholder */}
+            <option value="" disabled>Select Location</option> {/* ✅ Added Placeholder */}
             {filterOptions.location.map((group, index) => (
               <optgroup key={index} label={group.label}>
                 {group.options.map((option, idx) => (
@@ -90,7 +90,7 @@ const Filters = ({onFilterChange}) => {
         <div className="filter-group">
           <label>Property Type</label>
           <select name="propertyType" value={filters.propertyType} onChange={handleChange}>
-            <option value="">Select Property Type</option> {/* ✅ Added Placeholder */}
+            <option value="" disabled>Select Property Type</option> {/* ✅ Added Placeholder */}
             {filterOptions.propertyType.map((group, index) => (
               <optgroup key={index} label={group.label}>
                 {group.options.map((option, idx) => (
@@ -107,7 +107,7 @@ const Filters = ({onFilterChange}) => {
         <div className="filter-group">
           <label>Price Range</label>
           <select name="priceRange" value={filters.priceRange} onChange={handleChange}>
-            <option value="">Select Price Range</option> {/* ✅ Added Placeholder */}
+            <option value="" disabled>Select Price Range <span>(in ₹)</span></option> {/* ✅ Added Placeholder */}
             {filterOptions.priceRange.map((option, index) => (
               <option key={index} value={option}>
                 {option}
@@ -120,7 +120,7 @@ const Filters = ({onFilterChange}) => {
         <div className="filter-group">
           <label>Living Type</label>
           <select name="livingType" value={filters.livingType} onChange={handleChange}>
-            <option value="">Select Living Type</option> {/* ✅ Added Placeholder */}
+            <option value="" disabled>Select Living Type</option> {/* ✅ Added Placeholder */}
             {filterOptions.livingType.map((option, index) => (
               <option key={index} value={option}>
                 {option}
