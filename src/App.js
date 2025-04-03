@@ -5,7 +5,8 @@ import PropertyList from "../src/components/PropertyList";
 import Footer from "./components/Footer";
 import Popup from './components/Popup';
 import WhatsAppButton from "./components/WhatsAppButton";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ContactUs from "./pages/ContactUs";
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -55,21 +56,27 @@ const App = () => {
 
 
   return (
-    <div className="app-container">
-      {/* {showExitPopup && <ExitPopup onClose={()=>setShowExitPopup(false)}/>} */}
-      {showPopup && <Popup onClose={closePopup}/>}
-      {/* <Navbar></Navbar> */}
-      <div className="heading">
-        <h1>Find <span className="highlight">Perfect</span> Place <br /> To Live Life.</h1>
-        <Filters onFilterChange={handleFilterChange} />
-        {/* <Banner /> */}
-        <p className="location-notice">Currently available in <span className="location-notice-city">Gurgaon</span> only. Stay tuned for more locations soon. 😊🏡</p>
-        <PropertyList filters={filters}></PropertyList>
-      </div>
-        <Footer></Footer>
-        <WhatsAppButton />
-    </div>
-  );
+    <Router>
+      <Routes>
+          <Route path="/contact" element={<ContactUs />} />
+
+        <Route path="/" element={
+          <div className="app-container">
+          {showPopup && <Popup onClose={closePopup}/>}
+          <div className="heading">
+            <h1>Find <span className="highlight">Perfect</span> Place <br /> To Live Life.</h1>
+            <Filters onFilterChange={handleFilterChange} />
+            <p className="location-notice">Currently available in <span className="location-notice-city">Gurgaon</span> only. Stay tuned for more locations soon. 😊🏡</p>
+            <PropertyList filters={filters}></PropertyList>
+          </div>
+            <Footer></Footer>
+            <WhatsAppButton />
+        </div>
+        }
+        />
+        </Routes>
+    </Router> 
+     );
 };
 
 export default App;
