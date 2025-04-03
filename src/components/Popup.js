@@ -40,7 +40,7 @@ const Popup = ({ onClose }) => {
     
     console.log("User Details:", formData);
 
-    const googleForms = "https://docs.google.com/forms/d/e/1FAIpQLSexfK_7IoNixG13kIBiRv47cYyQxd5I7oATSfTIAwAr7AJpug/formResponse";
+    const googleForms = "";
     const formDataToSend = new FormData();
     formDataToSend.append("entry.568754796", formData.name);
     formDataToSend.append("entry.1640362865", formData.phone); 
