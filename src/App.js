@@ -7,6 +7,8 @@ import Popup from './components/Popup';
 import WhatsAppButton from "./components/WhatsAppButton";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ContactUs from "./pages/ContactUs";
+import { HamburgerMenu } from "./components/HamburgerMenu";
+import Banner from "../src/Utils/Banner";
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -28,20 +30,20 @@ const App = () => {
   };
   
   // Function to close the popup and set it to reappear after 10 seconds
-   const closePopup = () => {
-    setShowPopup(false);
-    setTimeout(openPopup, 30000); 
-  };
+  //  const closePopup = () => {
+  //   setShowPopup(false);
+  //   setTimeout(openPopup, 30000); 
+  // };
 
   // Show popup when site loads ,added 10 secs interval to show popup
-  useEffect(() => {
-    const initialPopupTimer = setTimeout(() => {
-      setShowPopup(true);
-    }, 30000); 
+  // useEffect(() => {
+  //   const initialPopupTimer = setTimeout(() => {
+  //     setShowPopup(true);
+  //   }, 30000); 
 
-    return () => clearTimeout(initialPopupTimer);
+  //   return () => clearTimeout(initialPopupTimer);
     
-  }, []);
+  // }, []);
 
   // useEffect(() => {
   //   const whenuserleavespage = (event) => {
@@ -57,14 +59,17 @@ const App = () => {
 
   return (
     <Router>
+      
       <Routes>
           <Route path="/contact" element={<ContactUs />} />
 
         <Route path="/" element={
           <div className="app-container">
-          {showPopup && <Popup onClose={closePopup}/>}
+            <HamburgerMenu />
+          {/* {showPopup && <Popup onClose={closePopup}/>} */}
           <div className="heading">
-            <h1>Find <span className="highlight">Perfect</span> Place <br /> To Live Life.</h1>
+            <h1>My<span className="highlight">Brokers</span><small>.in</small><br /></h1>
+            <Banner />
             <Filters onFilterChange={handleFilterChange} />
             <p className="location-notice">Currently available in <span className="location-notice-city">Gurgaon</span> only. Stay tuned for more locations soon. 😊🏡</p>
             <PropertyList filters={filters}></PropertyList>

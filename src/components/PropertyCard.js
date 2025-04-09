@@ -17,7 +17,7 @@ const PropertyCard = ({ property }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false, // Remove next/prev buttons for a clean UI
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
   };
 
