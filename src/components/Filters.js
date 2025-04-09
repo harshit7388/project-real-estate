@@ -67,13 +67,15 @@ const Filters = ({onFilterChange}) => {
        {/* Message instead of Tabs */}
        <div className="filter-message">
         <p>We deal in rental properties only !!</p>
+        <br></br>
       </div>
+      
 
       {/* Filter Options Section */}
       <div className="filter-options">
         {/* Location Filter */}
         <div className="filter-group">
-          <label>Location</label>
+          <label class name="filterselectionheading">Location</label>
           <select name="location" value={filters.location} onChange={handleChange}>
             <option value="" disabled>Select Location</option> 
             {filterOptions.location.map((group, index) => (

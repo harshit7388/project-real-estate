@@ -1,0 +1,57 @@
+.hamburger-container {
+  position: relative;
+
+  @media (max-width: 768px) {
+    display: block; // show on mobile
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .hamburger-icon {
+    position: fixed; // keeps it stuck at top-right regardless of scrolling
+    top: 20px;
+    right: 20px;
+    z-index: 999; // ensures it's above everything
+    font-size: 28px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .dropdown-menu {
+    position: fixed;
+    top: 68px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 998;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #b2aed6;
+
+    div {
+      padding: 10px 15px;
+      border-bottom: 4px solid #eee;
+      cursor: pointer;
+      font-weight: bold;
+
+      &:hover {
+        background: #f3f3f3;
+      }
+    }
+  }
+
+  .form-container {
+    margin-top: 20px;
+    padding: 10px;
+  }
+  .jobformheadingdropdown{
+    
+  }
+}

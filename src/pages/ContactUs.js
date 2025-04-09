@@ -7,7 +7,7 @@ const ContactUs = () => {
       name: "",
       phone: "",
       location: "",
-      budget: "",
+      message: "",
     });
   const [errors, setErrors] = useState({});
 
@@ -22,7 +22,7 @@ const ContactUs = () => {
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.phone.trim()) newErrors.phone = "Phone is required";
     if (!formData.location.trim()) newErrors.location = "Location is required";
-    if (!formData.budget.trim()) newErrors.budget = "Budget is required";
+    if (!formData.message.trim()) newErrors.message = "Your message is required";
     return newErrors;
   };
   const handleSubmit = async (e) => {
@@ -41,7 +41,7 @@ const ContactUs = () => {
     formDataToSend.append("entry.568754796", formData.name);
     formDataToSend.append("entry.1640362865", formData.phone); 
     formDataToSend.append("entry.1163558768", formData.location); 
-    formDataToSend.append("entry.88614705", formData.budget); 
+    formDataToSend.append("entry.1497005571", formData.message); 
 
     await fetch(googleForms, {
       method: "POST",
@@ -54,7 +54,7 @@ const ContactUs = () => {
       name: "",
       phone: "",
       location: "",
-      budget: "",        
+      message: "",        
     });
 
     setErrors({}); // Clear errors
@@ -101,12 +101,15 @@ const ContactUs = () => {
           )}
           <input
             type="text"
-            name="budget"
-            placeholder="Your Budget (₹)"
-            value={formData.budget}
+            name="message"
+            placeholder="Your Message"
+            value={formData.message}
             onChange={handleChange}
           />
-          <button type="submit">Send Message</button>
+           {errors.location && (
+            <span className="error-message">{errors.message}</span>
+          )}
+          <button type="submit" className="sbmtbtn">Send Message</button>
         </form>
         <div><small className="contactus">MyBrokers.in</small></div>
       </div>

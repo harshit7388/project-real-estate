@@ -3,8 +3,9 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to right, #f3f2f8, #6a11cb);
+    background: blueviolet;
     padding: 20px;
+    
   }
   
   .contact-card {
@@ -17,6 +18,11 @@
     max-width: 400px;
     text-align: center;
     color: white;
+
+    p{
+      color: black;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
   }
   
   .contact-card h2 {
@@ -74,4 +80,8 @@
   .contactus{
     color: black;
     font-weight: bold;
+  }
+  .sbmtbtn{
+    font-weight: 900;
+    font-size: 15px;
   }
