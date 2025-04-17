@@ -8,7 +8,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ContactUs from "./pages/ContactUs";
 import { HamburgerMenu } from "./components/HamburgerMenu";
-import Banner from "../src/Utils/Banner";
+import Banner from "../src/utils/Banner";
 
 const App = () => {
   const [filters, setFilters] = useState({
