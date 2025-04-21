@@ -26,9 +26,9 @@ export const HamburgerMenu = () => {
 
       {menuOpen && (
         <div className="dropdown-menu">
-          <div onClick={() => handleSelectForm("job")}>Looking for a job?</div>
-          <div onClick={() => handleSelectForm("owner")}>Want to list property?</div>
-          <div onClick={() => handleSelectForm("rental")}>Looking for PG/Room?</div>
+          <div onClick={() => handleSelectForm("job")}>Find Job</div>
+          <div onClick={() => handleSelectForm("owner")}>List Property</div>
+          <div onClick={() => handleSelectForm("rental")}>Find Stay</div>
         </div>
       )}
 

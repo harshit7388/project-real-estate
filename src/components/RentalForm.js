@@ -26,7 +26,7 @@ const RentalForm = ({ onClose }) => {
     if (!formData.phone.trim()) newErrors.phone = "Phone is required";
     if (!formData.location.trim()) newErrors.location = "Location is required";
     if (!formData.budget.trim()) newErrors.budget = "Budget is required";
-    if (!formData.propertyType.trim()) newErrors.propertyType = "propertyType is required";
+    if (!formData.propertyType.trim()) newErrors.propertyType = "property Type is required";
     return newErrors;
   };
 

@@ -19,8 +19,8 @@ const Banner = () => {
           transition={{ duration: 0.6, ease: 'easeInOut' }}
         >
           <div className="banner-content">
-            <span role="img" aria-label="staff">💼</span>
-            We also provide <strong>staff</strong>. Kindly contact us for more info!
+            <span role="img" aria-label="staff">💼</span>Want job<strong></strong>.
+            Contact us.
           </div>
           <button className="banner-close" onClick={() => setShowBanner(false)}>
             <X size={18} />
