@@ -4,7 +4,7 @@ import PropertyCard from './PropertyCard';
 import '../styles/components/_propertyList.scss';
 const propertiesData = [
     {
-      id: 1,
+      id: '#001',
       title: "Luxury PG",
       location: "Sector 45",
       price: "12000",
@@ -17,7 +17,7 @@ const propertiesData = [
       ownerPhone: "7388670069",
     },
     {
-      id: 2,
+      id: '#002',
       title: "1 BHK in Ardee City",
       location: "Ardee City",
       price: "18000",
@@ -30,7 +30,7 @@ const propertiesData = [
       ownerPhone: "7388670069",
     },
     {
-      id: 3,
+      id: '#003',
       title: "2 RK in Sector 57",
       location: "Sector 57",
       price: "15000",
@@ -44,7 +44,7 @@ const propertiesData = [
       ownerPhone: "7388670069",
     },
     {
-      id: 4,
+      id: '#004',
       title: "PG 1",
       location: "Sector 45",
       price: "10000",
@@ -57,7 +57,7 @@ const propertiesData = [
       ownerPhone: "7388670069",
     },
     {
-      id: 5,
+      id: '#005',
       title: "2 BHK Apartment",
       location: "Sector 57",
       price: "20000",
@@ -70,7 +70,7 @@ const propertiesData = [
       ownerPhone: "7388670069",
     },
     {
-      id: 6,
+      id: '#006',
       title: "1 RK Studio",
       location: "Ardee City",
       price: "11000",

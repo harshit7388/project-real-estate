@@ -8,7 +8,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ContactUs from "./pages/ContactUs";
 import { HamburgerMenu } from "./components/HamburgerMenu";
-import Banner from "../src/utils/Banner";
+import Banner from '../src/utils/Banner'
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -59,17 +59,17 @@ const App = () => {
 
   return (
     <Router>
+      <HamburgerMenu />
       
       <Routes>
           <Route path="/contact" element={<ContactUs />} />
 
         <Route path="/" element={
           <div className="app-container">
-            <HamburgerMenu />
           {/* {showPopup && <Popup onClose={closePopup}/>} */}
           <div className="heading">
             <h1>My<span className="highlight">Brokers</span><small>.in</small><br /></h1>
-            <Banner />
+            {/* <Banner/> */}
             <Filters onFilterChange={handleFilterChange} />
             <p className="location-notice">Currently available in <span className="location-notice-city">Gurgaon</span> only. Stay tuned for more locations soon. 😊🏡</p>
             <PropertyList filters={filters}></PropertyList>

@@ -8,7 +8,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import "../styles/components/_propertyCard.scss";
 
 const PropertyCard = ({ property }) => {
-  const message = encodeURIComponent(`Hi, I am interested in your property: ${property.title}. My preferrences are: - ${property.location} , ${property.price} , ${property.propertyType} , ${property.livingType}`); ;
+  const message = encodeURIComponent(`Hi, I am interested in your property: ${property.id},${property.title}. My preferrences are: - ${property.location} , ${property.price} , ${property.propertyType} , ${property.livingType}`); ;
   const whatsappLink = `https://wa.me/+917388670069?text=${message}`;
   const settings = {
     dots: true,
