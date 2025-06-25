@@ -1,0 +1,46 @@
+.privacy-policy {
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+
+  .privacy-container {
+    max-width: 800px;
+    margin: auto;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #5b49ff;
+    }
+
+    section {
+      margin-bottom: 30px;
+
+      h2 {
+        font-size: 1.4rem;
+        color: #222;
+        margin-bottom: 10px;
+      }
+
+      p, ul {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      ul {
+        margin-left: 20px;
+        list-style-type: disc;
+      }
+
+      a {
+        color: #5b49ff;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

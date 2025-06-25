@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "../styles/components/_filters.scss";
 
-const Filters = ({onFilterChange}) => {
+const Filters = ({ onFilterChange }) => {
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [userContact, setUserContact] = useState({
+    name: "",
+    contact: "",
+  });
+  const [isContactSubmitted, setIsContactSubmitted] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [filters, setFilters] = useState({
     location: "",
@@ -39,45 +46,60 @@ const Filters = ({onFilterChange}) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     const updatedFilters = { ...filters, [name]: value };
-
-    // Reset living type if property type changes
-    if (name === "propertyType") {
-      updatedFilters.livingType = "";
-    }
-
+    if (name === "propertyType") updatedFilters.livingType = "";
     setFilters(updatedFilters);
-    onFilterChange(updatedFilters);
   };
 
-  // Function to toggle amenity selection
   const toggleAmenity = (amenity) => {
     const updated = selectedAmenities.includes(amenity)
       ? selectedAmenities.filter((item) => item !== amenity)
       : [...selectedAmenities, amenity];
     setSelectedAmenities(updated);
   };
+
   const handleSearch = () => {
-    const updatedFilters = { ...filters, amenities: selectedAmenities }; 
-    onFilterChange(updatedFilters); 
+    const hasFilters =
+      filters.location ||
+      filters.propertyType ||
+      filters.priceRange ||
+      filters.livingType ||
+      selectedAmenities.length > 0;
+
+    if (!hasFilters) {
+      setAlertMessage("Please select at least one filter before searching.");
+      setTimeout(() => setAlertMessage(""), 3000);
+      return;
+    }
+
+    if (!isContactSubmitted) {
+      setShowContactModal(true);
+      return;
+    }
+
+    const updatedFilters = { ...filters, amenities: selectedAmenities };
+    onFilterChange(updatedFilters);
   };
 
   return (
     <div className="filters">
-
-       {/* Message instead of Tabs */}
-       <div className="filter-message">
+      <div className="filter-message">
         <p>We deal in rental properties only !!</p>
-        <br></br>
+        <br />
       </div>
-      
 
-      {/* Filter Options Section */}
+      {alertMessage && <div className="custom-alert">{alertMessage}</div>}
+
       <div className="filter-options">
-        {/* Location Filter */}
         <div className="filter-group">
-          <label class name="filterselectionheading">Location</label>
-          <select name="location" value={filters.location} onChange={handleChange}>
-            <option value="" disabled>Select Location</option> 
+          <label className="filterselectionheading">Location</label>
+          <select
+            name="location"
+            value={filters.location}
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              Select Location
+            </option>
             {filterOptions.location.map((group, index) => (
               <optgroup key={index} label={group.label}>
                 {group.options.map((option, idx) => (
@@ -90,11 +112,16 @@ const Filters = ({onFilterChange}) => {
           </select>
         </div>
 
-        {/* Property Type Filter */}
         <div className="filter-group">
           <label>Property Type</label>
-          <select name="propertyType" value={filters.propertyType} onChange={handleChange}>
-            <option value="" disabled>Select Property Type</option> 
+          <select
+            name="propertyType"
+            value={filters.propertyType}
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              Select Property Type
+            </option>
             {filterOptions.propertyType.map((group, index) => (
               <optgroup key={index} label={group.label}>
                 {group.options.map((option, idx) => (
@@ -107,11 +134,16 @@ const Filters = ({onFilterChange}) => {
           </select>
         </div>
 
-        {/* Price Range Filter */}
         <div className="filter-group">
           <label>Price Range</label>
-          <select name="priceRange" value={filters.priceRange} onChange={handleChange}>
-            <option value="" disabled>Select Price Range <span>(in ₹)</span></option>
+          <select
+            name="priceRange"
+            value={filters.priceRange}
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              Select Price Range (in ₹)
+            </option>
             {filterOptions.priceRange.map((option, index) => (
               <option key={index} value={option}>
                 {option}
@@ -120,20 +152,26 @@ const Filters = ({onFilterChange}) => {
           </select>
         </div>
 
-        {/* Conditional Living Type */}
         {filters.propertyType && (
           <div className="filter-group">
             <label>Living Type</label>
-            <select name="livingType" value={filters.livingType} onChange={handleChange}>
-              <option value="" disabled>Select Living Type</option>
+            <select
+              name="livingType"
+              value={filters.livingType}
+              onChange={handleChange}
+            >
+              <option value="" disabled>
+                Select Living Type
+              </option>
               {getLivingOptions().map((option, index) => (
-                <option key={index} value={option}>{option}</option>
+                <option key={index} value={option}>
+                  {option}
+                </option>
               ))}
             </select>
           </div>
         )}
 
-        {/* Amenities Section */}
         <div className="amenities">
           {filterOptions.amenities.map((amenity) => (
             <label
@@ -146,9 +184,83 @@ const Filters = ({onFilterChange}) => {
           ))}
         </div>
 
-        {/* Search Button */}
-        <button className="search-button" onClick={handleSearch}>&#128269;Search</button>
+        <button className="search-button" onClick={handleSearch}>
+          🔍 Search
+        </button>
       </div>
+
+      {showContactModal && (
+        <div className="modal-backdrop">
+          <div className="contact-modal">
+            <h3>Enter your contact details</h3>
+
+            {alertMessage && <div className="custom-alert">{alertMessage}</div>}
+
+            <input
+              type="text"
+              placeholder="Your Name"
+              value={userContact.name}
+              onChange={(e) =>
+                setUserContact({ ...userContact, name: e.target.value })
+              }
+            />
+
+            <input
+              type="text"
+              placeholder="Phone Number"
+              value={userContact.contact}
+              onChange={(e) =>
+                setUserContact({ ...userContact, contact: e.target.value })
+              }
+            />
+
+            <button
+              onClick={async () => {
+                const { name, contact } = userContact;
+                const isPhone = /^[6-9]\d{9}$/.test(contact);
+                const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+
+                if (!name || (!isPhone && !isEmail)) {
+                  setAlertMessage(
+                    "Please enter your name and a valid 10-digit phone number."
+                  );
+                  setTimeout(() => setAlertMessage(""), 3000);
+                  return;
+                }
+
+                // Submit to Google Form
+                const googleFormsURL =
+                  "https://docs.google.com/forms/d/e/1FAIpQLSexfK_7IoNixG13kIBiRv47cYyQxd5I7oATSfTIAwAr7AJpug/formResponse";
+
+                const formDataToSend = new FormData();
+                formDataToSend.append("entry.568754796", name); // Name field
+                formDataToSend.append("entry.1640362865", contact); // Phone field
+
+                try {
+                  await fetch(googleFormsURL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: formDataToSend,
+                  });
+                } catch (err) {
+                  console.error("Google Form submission error", err);
+                }
+
+                // Apply filter after submission
+                setIsContactSubmitted(true);
+                setShowContactModal(false);
+                const updatedFilters = {
+                  ...filters,
+                  amenities: selectedAmenities,
+                };
+                onFilterChange(updatedFilters);
+              }}
+            >
+              Submit & Search
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
