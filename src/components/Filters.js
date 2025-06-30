@@ -20,7 +20,7 @@ const Filters = ({ onFilterChange }) => {
 
   const filterOptions = {
     location: [
-      { label: "Gurgaon", options: ["Sector 45", "Sector 57", "Ardee City"] },
+      { label: "Gurgaon", options: ["Sector 45", "Sector 57", "Ardee City","Sector 52"] },
     ],
     propertyType: [
       { label: "PG", options: ["PG"] },
