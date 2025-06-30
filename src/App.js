@@ -12,6 +12,9 @@ import Banner from '../src/utils/Banner'
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Navbar from "./components/Navbar";
 import NotifyOwnerButton from "./styles/components/NotifyOwnerButton";
+import PropertyDetails from "./components/PropertyDetails";
+import PopularProperties from "./components/PopularProperties";
+import propertiesData from './components/PropertyList';
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -64,6 +67,7 @@ const App = () => {
     <Router>
       {/* <HamburgerMenu /> */}
           <Navbar />
+          
           {/* <NotifyOwnerButton/> */}
       
       <Routes>
@@ -78,6 +82,7 @@ const App = () => {
             {/* <Banner/> */}
             <Filters onFilterChange={handleFilterChange} />
             <p className="location-notice">Currently available in <span className="location-notice-city">Gurgaon</span> only. Stay tuned for more locations soon. 😊🏡</p>
+            <PopularProperties propertiesData={propertiesData} ids={["#001", "#003", "#004"]}/>
             <PropertyList filters={filters}></PropertyList>
           </div>
             <Footer></Footer>
@@ -85,6 +90,7 @@ const App = () => {
         </div>
         }
         />
+          {/* <Route path="/property/:id" element={<PropertyDetails />} /> */}
         </Routes>
     </Router> 
      );
