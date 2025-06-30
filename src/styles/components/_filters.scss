@@ -247,6 +247,14 @@
       margin-top: 40px;
     }
   }
+  .filters .filter-options .filter-group {
+    display: contents;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    min-width: 180px;
+}
 }
 
 .filters .filter-options .filter-group select {
