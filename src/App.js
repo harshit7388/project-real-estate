@@ -9,6 +9,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ContactUs from "./pages/ContactUs";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 import Banner from '../src/utils/Banner'
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Navbar from "./components/Navbar";
+import NotifyOwnerButton from "./styles/components/NotifyOwnerButton";
 
 const App = () => {
   const [filters, setFilters] = useState({
@@ -59,10 +62,13 @@ const App = () => {
 
   return (
     <Router>
-      <HamburgerMenu />
+      {/* <HamburgerMenu /> */}
+          <Navbar />
+          {/* <NotifyOwnerButton/> */}
       
       <Routes>
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         <Route path="/" element={
           <div className="app-container">

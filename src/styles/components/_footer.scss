@@ -91,3 +91,20 @@
     }
   }
 }
+
+.footer-map {
+  margin-top: 20px;
+
+  h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: black;
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    border-radius: 8px;
+  }
+}
