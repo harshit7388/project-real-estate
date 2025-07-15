@@ -11,7 +11,7 @@ import footerimg from "../assets/images/footerimg.png";
 
 const Footer = () => {
   const message = "Hi,I am interested in your property listings. Can you provide more details?";
-  const whatsappLink = `https://wa.me/+918887590378?text=${message}`;
+  const whatsappLink = `https://wa.me/+918302444432?text=${message}`;
 
   return (
     <footer

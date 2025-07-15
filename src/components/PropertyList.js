@@ -48,7 +48,7 @@ export const propertiesData = [
     images: [pg1, pg2, pg3, pg4],
     // video: require("../assets/videos/video1.mp4"),
     // ownerName: "Rahul Sharma",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
   {
     id: "#002",
@@ -61,7 +61,7 @@ export const propertiesData = [
     images: [pg5, pg6, pg7],
     // video: require("../assets/videos/video1.mp4"),
     ownerName: "Rohit Singh",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
   {
     id: "#003",
@@ -75,7 +75,7 @@ export const propertiesData = [
     images: [pg8, pg9, pg10],
     // video: require("../assets/videos/video1.mp4"),
     ownerName: "Rajesh Kumar",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
   {
     id: "#004",
@@ -88,7 +88,7 @@ export const propertiesData = [
     images: [rki1, rki2, rki3],
     // video: require("../assets/videos/video1.mp4"),
     ownerName: "Rajat Verma",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
   {
     id: "#005",
@@ -101,7 +101,7 @@ export const propertiesData = [
     images: [rkii1, rkii2], 
     // video: require("../assets/videos/video1.mp4"),
     ownerName: "Rakesh Tiwari",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
   {
     id: "#006",
@@ -114,7 +114,7 @@ export const propertiesData = [
     images: [rkiii1, rkiii2],
     // video: require("../assets/videos/video1.mp4"),
     ownerName: "Shivam Kumar",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
   {
     id: "#007",
@@ -127,7 +127,7 @@ export const propertiesData = [
     images: [rkiv1, rkiv2, rkiv3],
     // video: require("../assets/videos/video1.mp4"),
     ownerName: "Shivam Kumar",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
   {
     id: "#008",
@@ -140,7 +140,7 @@ export const propertiesData = [
     images: [rkv1, rkv2, rkv3],
     // video: require("../assets/videos/video1.mp4"),
     ownerName: "Shivam Kumar",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
   {
     id: "#009",
@@ -153,7 +153,7 @@ export const propertiesData = [
     images: [rkvi1, rkvi2, rkvi3],
     // video: require("../assets/videos/video1.mp4"),
     ownerName: "Shivam Kumar",
-    ownerPhone: "8887590378",
+    ownerPhone: "8302444432",
   },
 ];
 

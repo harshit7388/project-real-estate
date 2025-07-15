@@ -10,7 +10,7 @@
 //       images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
 //       video: require("../assets/videos/video1.mp4"),
 //       ownerName: "Rahul Sharma",
-//       ownerPhone: "7388670069",
+//       ownerPhone: "8302444432",
 //     },
 //     {
 //       id: '002',
@@ -23,7 +23,7 @@
 //       images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
 //       video: require("../assets/videos/video1.mp4"),
 //       ownerName: "Rohit Singh",
-//       ownerPhone: "7388670069",
+//       ownerPhone: "8302444432",
 //     },
 //     {
 //       id: '003',
@@ -37,7 +37,7 @@
 //       images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
 //       video: require("../assets/videos/video1.mp4"),
 //       ownerName: "Rajesh Kumar",
-//       ownerPhone: "7388670069",
+//       ownerPhone: "8302444432",
 //     },
 //     {
 //       id: '004',
@@ -50,7 +50,7 @@
 //       images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
 //       video: require("../assets/videos/video1.mp4"),
 //       ownerName: "Rajat Verma",
-//       ownerPhone: "7388670069",
+//       ownerPhone: "8302444432",
 //     },
 //     {
 //       id: '005',
@@ -63,7 +63,7 @@
 //       images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
 //       video: require("../assets/videos/video1.mp4"),
 //       ownerName: "Rakesh Tiwari",
-//       ownerPhone: "7388670069",
+//       ownerPhone: "8302444432",
 //     },
 //     {
 //       id: '006',
@@ -76,6 +76,6 @@
 //       images: [require("../assets/images/img1.jpg"), require("../assets/images/img2.jpg"), require("../assets/images/img3.jpg")],
 //       video: require("../assets/videos/video1.mp4"),
 //       ownerName: "Shivam Kumar",
-//       ownerPhone: "7388670069",
+//       ownerPhone: "8302444432",
 //     },
 // ]

@@ -9,7 +9,7 @@ import "../styles/components/_propertyCard.scss";
 
 const PropertyCard = ({ property }) => {
   const message = encodeURIComponent(`Hi, I am interested in your property: ${property.id},${property.title}. My preferrences are: - ${property.location} , ${property.propertyType} , ${property.livingType}`); ;
-  const whatsappLink = `https://wa.me/+917388670069?text=${message}`;
+  const whatsappLink = `https://wa.me/+918302444432?text=${message}`;
   const settings = {
     dots: true,
     infinite: true,
