@@ -27,9 +27,9 @@ const Footer = () => {
         <div className="footer-info">
           <h4>MyBrokers.in</h4>
           <ul>
-            <li>
+            {/* <li>
               <a href="#">About Us</a>
-            </li>
+            </li> */}
             <li>
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer" >
                 Contact Us
