@@ -28,7 +28,7 @@ const App = () => {
 
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
-    console.log("Selected Filters:", newFilters);
+    // console.log("Selected Filters:", newFilters);
   };
    // Function to open the popup
    const openPopup = () => {
@@ -82,7 +82,7 @@ const App = () => {
             {/* <Banner/> */}
             <Filters onFilterChange={handleFilterChange} />
             <p className="location-notice">Currently available in <span className="location-notice-city">Gurgaon</span> only. Stay tuned for more locations soon. 😊🏡</p>
-            <PopularProperties propertiesData={propertiesData} ids={["#001", "#003", "#004"]}/>
+            {/* <PopularProperties propertiesData={propertiesData} ids={["#001", "#003", "#004"]}/> */}
             <PropertyList filters={filters}></PropertyList>
           </div>
             <Footer></Footer>
