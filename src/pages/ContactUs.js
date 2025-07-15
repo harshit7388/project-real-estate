@@ -36,12 +36,12 @@ const ContactUs = () => {
     }
     
 
-    const googleForms = "https://docs.google.com/forms/d/e/1FAIpQLSexfK_7IoNixG13kIBiRv47cYyQxd5I7oATSfTIAwAr7AJpug/formResponse";
+    const googleForms = "https://docs.google.com/forms/d/1S0s-5c8y9mT5FZRbkV1_qRqkLdLfYtYkIV7eE5DNlBE/formResponse";
     const formDataToSend = new FormData();
-    formDataToSend.append("entry.568754796", formData.name);
-    formDataToSend.append("entry.1640362865", formData.phone); 
-    formDataToSend.append("entry.1163558768", formData.location); 
-    formDataToSend.append("entry.1497005571", formData.message); 
+    formDataToSend.append("entry.28741682", formData.name);
+    formDataToSend.append("entry.1854633370", formData.phone); 
+    formDataToSend.append("entry.2068926587", formData.location); 
+    formDataToSend.append("entry.1192365053", formData.message); 
 
     await fetch(googleForms, {
       method: "POST",
