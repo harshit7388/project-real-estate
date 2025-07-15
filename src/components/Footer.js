@@ -1,11 +1,28 @@
 import React from "react";
-import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram } from "react-icons/fa";
-import '../styles/components/_footer.scss';
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaYoutube,
+  FaInstagram,
+} from "react-icons/fa";
+import "../styles/components/_footer.scss";
 import { Link } from "react-router-dom";
+import footerimg from "../assets/images/footerimg.png";
 
 const Footer = () => {
+  const message = "Hi,I am interested in your property listings. Can you provide more details?";
+  const whatsappLink = `https://wa.me/+918302444432?text=${message}`;
+
   return (
-    <footer className="footer">
+    <footer
+      className="footer"
+      style={{
+        backgroundImage: `url(${footerimg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="footer-container">
         <div className="footer-info">
           <h4>MyBrokers.in</h4>
@@ -14,7 +31,9 @@ const Footer = () => {
               <a href="#">About Us</a>
             </li>
             <li>
-              <Link to="/contact">Contact Us</Link>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" >
+                Contact Us
+              </a>
             </li>
             <li>
               <Link to="/privacy-policy">Privacy Policy</Link>

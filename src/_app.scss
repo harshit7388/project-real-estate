@@ -4,6 +4,12 @@ html,body {
   padding: 0;
   width: 100%;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 .heading {
     font-size: 20px; // Increased font size

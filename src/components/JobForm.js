@@ -40,12 +40,12 @@ const Jobform = ({ onClose }) => {
     
     console.log("User Details:", formData);
 
-    const googleForms = "https://docs.google.com/forms/d/e/1FAIpQLSexfK_7IoNixG13kIBiRv47cYyQxd5I7oATSfTIAwAr7AJpug/formResponse";
+    const googleForms = "https://docs.google.com/forms/d/1S0s-5c8y9mT5FZRbkV1_qRqkLdLfYtYkIV7eE5DNlBE/formResponse";
     const formDataToSend = new FormData();
-    formDataToSend.append("entry.568754796", formData.name);
-    formDataToSend.append("entry.1640362865", formData.phone); 
-    formDataToSend.append("entry.1163558768", formData.location); 
-    formDataToSend.append("entry.988107217", formData.jobrole); 
+    formDataToSend.append("entry.28741682", formData.name);
+    formDataToSend.append("entry.1854633370", formData.phone); 
+    formDataToSend.append("entry.2068926587", formData.location); 
+    formDataToSend.append("entry.8940731", formData.jobrole); 
 
     await fetch(googleForms, {
       method: "POST",
@@ -61,7 +61,7 @@ const Jobform = ({ onClose }) => {
       setShowThankYou(false); // Hide message after 3 seconds
       onClose(); // Close popup
       setShowForm(true); // Reset form visibility for next time
-    }, 3000);
+    }, 90000);
 
     // Reset form
     setFormData({
@@ -75,63 +75,60 @@ const Jobform = ({ onClose }) => {
   };
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-box">
-        {/* Close Button */}
-        <button className="close-btn" onClick={onClose}>
-          <FaTimes />
-        </button>
+   <div className="popup-overlay">
+      {showForm && (
+        <div className="popup-box">
+          <button className="close-btn" onClick={onClose}>
+            <FaTimes />
+          </button>
 
-        {showForm ? (
-          <>
-            <h2>Get the Best Jobs </h2>
+          <h2>Get the Best Jobs </h2>
 
-            {/* Form Fields */}
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-              {errors.name && <span className="error-message">{errors.name}</span>}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            {errors.name && <span className="error-message">{errors.name}</span>}
 
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Your Phone Number"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-              {errors.phone && <span className="error-message">{errors.phone}</span>}
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Your Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            {errors.phone && <span className="error-message">{errors.phone}</span>}
 
-              <input
-                type="text"
-                name="location"
-                placeholder="Preferred Location"
-                value={formData.location}
-                onChange={handleChange}
-              />
-              {errors.location && <span className="error-message">{errors.location}</span>}
+            <input
+              type="text"
+              name="location"
+              placeholder="Preferred Location"
+              value={formData.location}
+              onChange={handleChange}
+            />
+            {errors.location && <span className="error-message">{errors.location}</span>}
 
-              <input
-                type="text"
-                name="jobrole"
-                placeholder="Your preferred job role"
-                value={formData.jobrole}
-                onChange={handleChange}
-              />
-              {errors.jobrole && <span className="error-message">{errors.jobrole}</span>}
+            <input
+              type="text"
+              name="jobrole"
+              placeholder="Your Preferred Job Role"
+              value={formData.jobrole}
+              onChange={handleChange}
+            />
+            {errors.jobrole && <span className="error-message">{errors.jobrole}</span>}
 
-              {/* Submit Button */}
-              <button type="submit" className="submit-btn">Reach out to us !!</button>
-            </form>
-          </>
-        ) : (
-          showThankYou && <div className="thank-you-message">✅ Thanks for reaching out!</div>
-        )}
-      </div>
+            <button type="submit" className="submit-btn">Reach out to us !!</button>
+          </form>
+        </div>
+      )}
+
+      {showThankYou && (
+        <div className="thank-you-message">✅ Thanks for reaching out!</div>
+      )}
     </div>
   );
 };

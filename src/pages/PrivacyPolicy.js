@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
             <li>Opt out of marketing communications</li>
           </ul>
           <p>To request, contact us at:</p>
-          <p>Email: <a href="mailto:support@mybrokers.in">support@mybrokers.in</a></p>
+          <p>Email: <a href="mailto:support@mybrokers.in">mybrokersinfo@gmail.com</a></p>
           {/* <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p> */}
         </section>
 
@@ -104,9 +104,9 @@ const PrivacyPolicy = () => {
           <h2>10. Contact Us</h2>
           <p>If you have questions, reach out to:</p>
           <p><strong>MyBrokers.in</strong></p>
-          <p>Email: <a href="mailto:support@mybrokers.in">support@mybrokers.in</a></p>
+          <p>Email: <a href="mailto:support@mybrokers.in">mybrokersinfo@gmail.com</a></p>
           {/* <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p> */}
-          <p>Address: [Insert Your Company Address]</p>
+          {/* <p>Address: [Insert Your Company Address]</p> */}
         </section>
       </div>
     </div>

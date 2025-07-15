@@ -1,126 +1,197 @@
+import React from "react";
+import PropertyCard from "./PropertyCard";
+import "../styles/components/_propertyList.scss";
+import pg1 from "../assets/images/PG52i/pg1.jpg"
+import pg2 from "../assets/images/PG52i/pg2.png"
+import pg3 from "../assets/images/PG52i/pg3.png"  
+import pg4 from "../assets/images/PG52i/pg4.png"
+import pg5 from "../assets/images/PG52ii/pg5.jpg"
+import pg6 from "../assets/images/PG52ii/pg6.png"
+import pg7 from "../assets/images/PG52ii/pg7.png"
+import pg8 from "../assets/images/PG52iii/pg8.png"
+import pg9 from "../assets/images/PG52iii/pg9.png"
+import pg10 from "../assets/images/PG52iii/pg10.png"
 
-import React from 'react';
-import PropertyCard from './PropertyCard';
-import '../styles/components/_propertyList.scss';
-const propertiesData = [
-    {
-      id: '#001',
-      title: "Luxury PG",
-      location: "Sector 45",
-      price: "12000",
-      propertyType: "PG",
-      livingType: "For Girls Only",
-      amenities: ["WiFi", "Parking"],
-      images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
-      video: require("../assets/videos/video1.mp4"),
-      ownerName: "Rahul Sharma",
-      ownerPhone: "7388670069",
-    },
-    {
-      id: '#002',
-      title: "1 BHK in Ardee City",
-      location: "Ardee City",
-      price: "18000",
-      propertyType: "1 BHK",
-      livingType: "Furnished",
-      amenities: ["WiFi", "Furnished"],
-      images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
-      video: require("../assets/videos/video1.mp4"),
-      ownerName: "Rohit Singh",
-      ownerPhone: "7388670069",
-    },
-    {
-      id: '#003',
-      title: "2 RK in Sector 57",
-      location: "Sector 57",
-      price: "15000",
-      propertyType: "2 RK",
-      livingType: "Semi-Furnished",
-      amenities: ["Parking", "Furnished"],
-      // image: "https://picsum.photos/seed/picsum/200/300",
-      images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
-      video: require("../assets/videos/video1.mp4"),
-      ownerName: "Rajesh Kumar",
-      ownerPhone: "7388670069",
-    },
-    {
-      id: '#004',
-      title: "PG 1",
-      location: "Sector 45",
-      price: "10000",
-      propertyType: "PG",
-      livingType: "Co-living",
-      amenities: ["WiFi", "Furnished"],
-      images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
-      video: require("../assets/videos/video1.mp4"),
-      ownerName: "Rajat Verma",
-      ownerPhone: "7388670069",
-    },
-    {
-      id: '#005',
-      title: "2 BHK Apartment",
-      location: "Sector 57",
-      price: "20000",
-      propertyType: "2 BHK",
-      livingType: "Non-Furnished",
-      amenities: ["WiFi", "Parking", "Furnished"],
-      images:[require("../assets/images/img1.jpg"),require("../assets/images/img2.jpg"),require("../assets/images/img3.jpg")],
-      video: require("../assets/videos/video1.mp4"),
-      ownerName: "Rakesh Tiwari",
-      ownerPhone: "7388670069",
-    },
-    {
-      id: '#006',
-      title: "1 RK Studio",
-      location: "Ardee City",
-      price: "11000",
-      propertyType: "1 RK",
-      livingType: "Furnished",
-      amenities: ["WiFi", "Parking"],
-      images: [require("../assets/images/img1.jpg"), require("../assets/images/img2.jpg"), require("../assets/images/img3.jpg")],
-      video: require("../assets/videos/video1.mp4"),
-      ownerName: "Shivam Kumar",
-      ownerPhone: "7388670069",
-    },
-]
+import rki1 from "../assets/images/rk52i/rki1.png"
+import rki2 from "../assets/images/rk52i/rki2.png"
+import rki3 from "../assets/images/rk52i/rki3.png"
 
-const PropertyList = ({filters}) => {
+import rkii1 from "../assets/images/rk52ii/rkii1.png"
+import rkii2 from "../assets/images/rk52ii/rkii2.png"
 
-    const filteredProperties = propertiesData.filter((property) => {
+import rkiii1 from "../assets/images/rk52iii/rkiii1.png"
+import rkiii2 from "../assets/images/rk52iii/rkiii2.png"
+
+import rkiv1 from "../assets/images/rk52iv/rkiv1.png"
+import rkiv2 from "../assets/images/rk52iv/rkiv2.png"
+import rkiv3 from "../assets/images/rk52iv/rkiv3.png"
+
+import rkv1 from "../assets/images/rk52v/rkv1.png"
+import rkv2 from "../assets/images/rk52v/rkv2.png"
+import rkv3 from "../assets/images/rk52v/rkv3.png"
+
+import rkvi1 from "../assets/images/rk52vi/rkvi1.png"
+import rkvi2 from "../assets/images/rk52vi/rkvi2.png"
+import rkvi3 from "../assets/images/rk52vi/rkvi3.png"
+
+
+
+export const propertiesData = [
+  {
+    id: "#001",
+    title: "Best PG in Sector 52",
+    location: "Sector 52",
+    price: "12000",
+    propertyType: "PG",
+    livingType: "Co-living",
+    amenities: ["WiFi", "Parking"],
+    images: [pg1, pg2, pg3, pg4],
+    // video: require("../assets/videos/video1.mp4"),
+    // ownerName: "Rahul Sharma",
+    ownerPhone: "8302444432",
+  },
+  {
+    id: "#002",
+    title: "PG for Boys & Girls in Sector 52",
+    location: "Sector 52",
+    price: "18000",
+    propertyType: "PG",
+    livingType: "Co-living",
+    amenities: ["WiFi", "Parking"],
+    images: [pg5, pg6, pg7],
+    // video: require("../assets/videos/video1.mp4"),
+    ownerName: "Rohit Singh",
+    ownerPhone: "8302444432",
+  },
+  {
+    id: "#003",
+    title: "Budget PGs in Sector 52",
+    location: "Sector 52",
+    price: "15000",
+    propertyType: "PG",
+    livingType: "Co-living",
+    amenities: ["Parking", "WiFi"],
+    // image: "https://picsum.photos/seed/picsum/200/300",
+    images: [pg8, pg9, pg10],
+    // video: require("../assets/videos/video1.mp4"),
+    ownerName: "Rajesh Kumar",
+    ownerPhone: "8302444432",
+  },
+  {
+    id: "#004",
+    title: "Affordable Flats in Sector 52",
+    location: "Sector 52",
+    price: "10000",
+    propertyType: "1 RK",
+    livingType: "Furnished",
+    amenities: ["WiFi", "Furnished"],
+    images: [rki1, rki2, rki3],
+    // video: require("../assets/videos/video1.mp4"),
+    ownerName: "Rajat Verma",
+    ownerPhone: "8302444432",
+  },
+  {
+    id: "#005",
+    title: "Luxury Flats on Rent",
+    location: "Sector 52",
+    price: "20000",
+    propertyType: "1 RK",
+    livingType: "Furnished",
+    amenities: ["WiFi", "Parking", "Furnished"],
+    images: [rkii1, rkii2], 
+    // video: require("../assets/videos/video1.mp4"),
+    ownerName: "Rakesh Tiwari",
+    ownerPhone: "8302444432",
+  },
+  {
+    id: "#006",
+    title: "1 RK Apartment",
+    location: "Sector 52",
+    price: "11000",
+    propertyType: "1 RK",
+    livingType: "Furnished",
+    amenities: ["WiFi", "Parking"],
+    images: [rkiii1, rkiii2],
+    // video: require("../assets/videos/video1.mp4"),
+    ownerName: "Shivam Kumar",
+    ownerPhone: "8302444432",
+  },
+  {
+    id: "#007",
+    title: "Low Budget 1 RK",
+    location: "Sector 52",
+    price: "11000",
+    propertyType: "1 RK",
+    livingType: "Furnished",
+    amenities: ["WiFi", "Parking"],
+    images: [rkiv1, rkiv2, rkiv3],
+    // video: require("../assets/videos/video1.mp4"),
+    ownerName: "Shivam Kumar",
+    ownerPhone: "8302444432",
+  },
+  {
+    id: "#008",
+    title: "Afforadable Flats in Gurgaon",
+    location: "Sector 52",
+    price: "11000",
+    propertyType: "1 RK",
+    livingType: "Furnished",
+    amenities: ["WiFi", "Parking"],
+    images: [rkv1, rkv2, rkv3],
+    // video: require("../assets/videos/video1.mp4"),
+    ownerName: "Shivam Kumar",
+    ownerPhone: "8302444432",
+  },
+  {
+    id: "#009",
+    title: "1 RK at best price",
+    location: "Sector 52",
+    price: "11000",
+    propertyType: "1 RK",
+    livingType: "Furnished",
+    amenities: ["WiFi", "Parking"],
+    images: [rkvi1, rkvi2, rkvi3],
+    // video: require("../assets/videos/video1.mp4"),
+    ownerName: "Shivam Kumar",
+    ownerPhone: "8302444432",
+  },
+];
+
+const PropertyList = ({ filters }) => {
+  const filteredProperties = propertiesData.filter((property) => {
     const matchLocation =
-    !filters.location || property.location === filters.location;
+      !filters.location || property.location === filters.location;
 
     const matchPropertyType =
-    !filters.propertyType || property.propertyType === filters.propertyType;
+      !filters.propertyType || property.propertyType === filters.propertyType;
 
     const matchLivingType =
-    !filters.livingType || property.livingType === filters.livingType;
+      !filters.livingType || property.livingType === filters.livingType;
 
     return matchLocation && matchPropertyType && matchLivingType;
-});
+  });
 
-    
-        // Slick Carousel Settings (Mobile Only)
-      const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        swipeToSlide: true,
-      };
+  // Slick Carousel Settings (Mobile Only)
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    swipeToSlide: true,
+  };
 
-    return(
-        <div className="property-list">
-        {filteredProperties.length > 0 ? (
-          filteredProperties.map((x) => (
-            <PropertyCard key={x.id} property={x} filters={filters} />
-          ))
-        ) : (
-          <p className="no-results">No properties match your filters.</p>
-        )}
-      </div>
-    );
-}
+  return (
+    <div className="property-list">
+      {filteredProperties.length > 0 ? (
+        filteredProperties.map((x) => (
+          <PropertyCard key={x.id} property={x} filters={filters} />
+        ))
+      ) : (
+        <p className="no-results">No properties match your filters.</p>
+      )}
+    </div>
+  );
+};
 export default PropertyList;
