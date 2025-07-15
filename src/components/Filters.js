@@ -229,12 +229,11 @@ const Filters = ({ onFilterChange }) => {
                 }
 
                 // Submit to Google Form
-                const googleFormsURL =
-                  "https://docs.google.com/forms/d/e/1FAIpQLSexfK_7IoNixG13kIBiRv47cYyQxd5I7oATSfTIAwAr7AJpug/formResponse";
+                const googleFormsURL = "https://docs.google.com/forms/d/1S0s-5c8y9mT5FZRbkV1_qRqkLdLfYtYkIV7eE5DNlBE/formResponse";
 
                 const formDataToSend = new FormData();
-                formDataToSend.append("entry.568754796", name); // Name field
-                formDataToSend.append("entry.1640362865", contact); // Phone field
+                formDataToSend.append("entry.28741682", name); // Name field
+                formDataToSend.append("entry.1854633370", contact); // Phone field
 
                 try {
                   await fetch(googleFormsURL, {
@@ -249,6 +248,8 @@ const Filters = ({ onFilterChange }) => {
                 // Apply filter after submission
                 setIsContactSubmitted(true);
                 setShowContactModal(false);
+                setAlertMessage("Thanks! We'll reach out to you shortly.");
+                setTimeout(() => setAlertMessage(""), 3000);
                 const updatedFilters = {
                   ...filters,
                   amenities: selectedAmenities,
