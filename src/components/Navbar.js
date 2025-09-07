@@ -70,27 +70,16 @@ const Navbar = () => {
             </AnimatePresence>
           </motion.div>
 
-          <motion.ul 
+                  <motion.ul 
             className={`navbar-menu ${menuOpen ? "active" : ""}`}
             initial={false}
-            animate={menuOpen ? "open" : "closed"}
+            animate={window.innerWidth > 768 ? "open" : (menuOpen ? "open" : "closed")}
             variants={{
-              open: { 
-                opacity: 1,
-                transition: { 
-                  staggerChildren: 0.1,
-                  delayChildren: 0.1
-                }
-              },
-              closed: { 
-                opacity: 0,
-                transition: { 
-                  staggerChildren: 0.05,
-                  staggerDirection: -1
-                }
-              }
+              open: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
+              closed: { opacity: 0, y: -20 }
             }}
           >
+
             <motion.li
               variants={{
                 open: { y: 0, opacity: 1 },
