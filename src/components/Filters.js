@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "../styles/components/_filters.scss";
 
 const Filters = ({ onFilterChange }) => {
@@ -80,22 +81,78 @@ const Filters = ({ onFilterChange }) => {
     onFilterChange(updatedFilters);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4 }
+    }
+  };
+
   return (
-    <div className="filters">
-      <div className="filter-message">
-        <p>We deal in rental properties only !!</p>
+    <motion.div 
+      className="filters"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div 
+        className="filter-message"
+        variants={itemVariants}
+      >
+        <motion.p
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 100 }}
+        >
+          We deal in rental properties only !!
+        </motion.p>
         <br />
-      </div>
+      </motion.div>
 
-      {alertMessage && <div className="custom-alert">{alertMessage}</div>}
+      <AnimatePresence>
+        {alertMessage && (
+          <motion.div 
+            className="custom-alert"
+            initial={{ opacity: 0, y: -20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+          >
+            {alertMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      <div className="filter-options">
-        <div className="filter-group">
+      <motion.div 
+        className="filter-options"
+        variants={itemVariants}
+      >
+        <motion.div 
+          className="filter-group"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
           <label className="filterselectionheading">Location</label>
-          <select
+          <motion.select
             name="location"
             value={filters.location}
             onChange={handleChange}
+            whileFocus={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
           >
             <option value="" disabled>
               Select Location
@@ -109,15 +166,21 @@ const Filters = ({ onFilterChange }) => {
                 ))}
               </optgroup>
             ))}
-          </select>
-        </div>
+          </motion.select>
+        </motion.div>
 
-        <div className="filter-group">
+        <motion.div 
+          className="filter-group"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
           <label>Property Type</label>
-          <select
+          <motion.select
             name="propertyType"
             value={filters.propertyType}
             onChange={handleChange}
+            whileFocus={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
           >
             <option value="" disabled>
               Select Property Type
@@ -131,15 +194,21 @@ const Filters = ({ onFilterChange }) => {
                 ))}
               </optgroup>
             ))}
-          </select>
-        </div>
+          </motion.select>
+        </motion.div>
 
-        <div className="filter-group">
+        <motion.div 
+          className="filter-group"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
           <label>Price Range</label>
-          <select
+          <motion.select
             name="priceRange"
             value={filters.priceRange}
             onChange={handleChange}
+            whileFocus={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
           >
             <option value="" disabled>
               Select Price Range (in ₹)
@@ -149,120 +218,197 @@ const Filters = ({ onFilterChange }) => {
                 {option}
               </option>
             ))}
-          </select>
-        </div>
+          </motion.select>
+        </motion.div>
 
-        {filters.propertyType && (
-          <div className="filter-group">
-            <label>Living Type</label>
-            <select
-              name="livingType"
-              value={filters.livingType}
-              onChange={handleChange}
+        <AnimatePresence>
+          {filters.propertyType && (
+            <motion.div 
+              className="filter-group"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.02 }}
             >
-              <option value="" disabled>
-                Select Living Type
-              </option>
-              {getLivingOptions().map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
+              <label>Living Type</label>
+              <motion.select
+                name="livingType"
+                value={filters.livingType}
+                onChange={handleChange}
+                whileFocus={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
+                <option value="" disabled>
+                  Select Living Type
                 </option>
-              ))}
-            </select>
-          </div>
-        )}
+                {getLivingOptions().map((option, index) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </motion.select>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        <div className="amenities">
-          {filterOptions.amenities.map((amenity) => (
-            <label
+        <motion.div 
+          className="amenities"
+          variants={itemVariants}
+        >
+          {filterOptions.amenities.map((amenity, index) => (
+            <motion.label
               key={amenity}
               className={selectedAmenities.includes(amenity) ? "selected" : ""}
               onClick={() => toggleAmenity(amenity)}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.3 }}
             >
               {amenity}
-            </label>
+            </motion.label>
           ))}
-        </div>
+        </motion.div>
 
-        <button className="search-button" onClick={handleSearch}>
+        <motion.button 
+          className="search-button" 
+          onClick={handleSearch}
+          whileHover={{ 
+            scale: 1.05, 
+            boxShadow: "0 8px 25px rgba(91, 73, 255, 0.4)",
+            y: -2
+          }}
+          whileTap={{ scale: 0.95, y: 0 }}
+          transition={{ duration: 0.2 }}
+        >
           🔍 Search
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
-      {showContactModal && (
-        <div className="modal-backdrop">
-          <div className="contact-modal">
-            <h3>Enter your contact details</h3>
-
-            {alertMessage && <div className="custom-alert">{alertMessage}</div>}
-
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={userContact.name}
-              onChange={(e) =>
-                setUserContact({ ...userContact, name: e.target.value })
-              }
-            />
-
-            <input
-              type="text"
-              placeholder="Phone Number"
-              value={userContact.contact}
-              onChange={(e) =>
-                setUserContact({ ...userContact, contact: e.target.value })
-              }
-            />
-
-            <button
-              onClick={async () => {
-                const { name, contact } = userContact;
-                const isPhone = /^[6-9]\d{9}$/.test(contact);
-                const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
-
-                if (!name || (!isPhone && !isEmail)) {
-                  setAlertMessage(
-                    "Please enter your name and a valid 10-digit phone number."
-                  );
-                  setTimeout(() => setAlertMessage(""), 3000);
-                  return;
-                }
-
-                // Submit to Google Form
-                const googleFormsURL = "https://docs.google.com/forms/d/1S0s-5c8y9mT5FZRbkV1_qRqkLdLfYtYkIV7eE5DNlBE/formResponse";
-
-                const formDataToSend = new FormData();
-                formDataToSend.append("entry.28741682", name); // Name field
-                formDataToSend.append("entry.1854633370", contact); // Phone field
-
-                try {
-                  await fetch(googleFormsURL, {
-                    method: "POST",
-                    mode: "no-cors",
-                    body: formDataToSend,
-                  });
-                } catch (err) {
-                  console.error("Google Form submission error", err);
-                }
-
-                // Apply filter after submission
-                setIsContactSubmitted(true);
-                setShowContactModal(false);
-                setAlertMessage("Thanks! We'll reach out to you shortly.");
-                setTimeout(() => setAlertMessage(""), 3000);
-                const updatedFilters = {
-                  ...filters,
-                  amenities: selectedAmenities,
-                };
-                onFilterChange(updatedFilters);
-              }}
+      <AnimatePresence>
+        {showContactModal && (
+          <motion.div 
+            className="modal-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div 
+              className="contact-modal"
+              initial={{ opacity: 0, scale: 0.8, y: 50 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 50 }}
+              transition={{ duration: 0.3, type: "spring", stiffness: 100 }}
             >
-              Submit & Search
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+              <motion.h3
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.4 }}
+              >
+                Enter your contact details
+              </motion.h3>
+
+              <AnimatePresence>
+                {alertMessage && (
+                  <motion.div 
+                    className="custom-alert"
+                    initial={{ opacity: 0, y: -20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -20, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {alertMessage}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <motion.input
+                type="text"
+                placeholder="Your Name"
+                value={userContact.name}
+                onChange={(e) =>
+                  setUserContact({ ...userContact, name: e.target.value })
+                }
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+                whileFocus={{ scale: 1.02 }}
+              />
+
+              <motion.input
+                type="text"
+                placeholder="Phone Number"
+                value={userContact.contact}
+                onChange={(e) =>
+                  setUserContact({ ...userContact, contact: e.target.value })
+                }
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+                whileFocus={{ scale: 1.02 }}
+              />
+
+              <motion.button
+                onClick={async () => {
+                  const { name, contact } = userContact;
+                  const isPhone = /^[6-9]\d{9}$/.test(contact);
+                  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+
+                  if (!name || (!isPhone && !isEmail)) {
+                    setAlertMessage(
+                      "Please enter your name and a valid 10-digit phone number."
+                    );
+                    setTimeout(() => setAlertMessage(""), 3000);
+                    return;
+                  }
+
+                  // Submit to Google Form
+                  const googleFormsURL = "https://docs.google.com/forms/d/1S0s-5c8y9mT5FZRbkV1_qRqkLdLfYtYkIV7eE5DNlBE/formResponse";
+
+                  const formDataToSend = new FormData();
+                  formDataToSend.append("entry.28741682", name); // Name field
+                  formDataToSend.append("entry.1854633370", contact); // Phone field
+
+                  try {
+                    await fetch(googleFormsURL, {
+                      method: "POST",
+                      mode: "no-cors",
+                      body: formDataToSend,
+                    });
+                  } catch (err) {
+                    console.error("Google Form submission error", err);
+                  }
+
+                  // Apply filter after submission
+                  setIsContactSubmitted(true);
+                  setShowContactModal(false);
+                  setAlertMessage("Thanks! We'll reach out to you shortly.");
+                  setTimeout(() => setAlertMessage(""), 3000);
+                  const updatedFilters = {
+                    ...filters,
+                    amenities: selectedAmenities,
+                  };
+                  onFilterChange(updatedFilters);
+                }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.4 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: "0 8px 25px rgba(91, 73, 255, 0.4)"
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Submit & Search
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
