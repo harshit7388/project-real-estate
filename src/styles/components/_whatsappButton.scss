@@ -12,8 +12,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
 
     &:hover {
         transform: scale(1.1);
+    }
+}
+
+// Mobile Responsive Styles
+@media (max-width: 768px) {
+    .whatsapp-button {
+        bottom: 16px;
+        right: 16px;
+        padding: 12px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-button {
+        bottom: 12px;
+        right: 12px;
+        padding: 10px;
+        font-size: 20px;
     }
 }

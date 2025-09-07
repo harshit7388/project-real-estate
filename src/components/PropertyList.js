@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import PropertyCard from "./PropertyCard";
 import "../styles/components/_propertyList.scss";
 import pg1 from "../assets/images/PG52i/pg1.jpg"
@@ -182,16 +183,83 @@ const PropertyList = ({ filters }) => {
     swipeToSlide: true,
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div className="property-list">
-      {filteredProperties.length > 0 ? (
-        filteredProperties.map((x) => (
-          <PropertyCard key={x.id} property={x} filters={filters} />
-        ))
-      ) : (
-        <p className="no-results">No properties match your filters.</p>
-      )}
-    </div>
+    <motion.div 
+      className="property-list"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <AnimatePresence mode="wait">
+        {filteredProperties.length > 0 ? (
+          filteredProperties.map((x, index) => (
+            <motion.div
+              key={x.id}
+              variants={itemVariants}
+              layout
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -50, scale: 0.9 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.1,
+                ease: "easeOut"
+              }}
+            >
+              <PropertyCard property={x} filters={filters} />
+            </motion.div>
+          ))
+        ) : (
+          <motion.div
+            className="no-results-container"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+          >
+            <motion.p 
+              className="no-results"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              🔍 No properties match your filters.
+            </motion.p>
+            <motion.p 
+              className="no-results-subtitle"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              Try adjusting your search criteria or contact us for more options!
+            </motion.p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 export default PropertyList;
