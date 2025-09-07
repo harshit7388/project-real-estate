@@ -192,3 +192,87 @@
         background: linear-gradient(135deg, #8e2de2, #4a00e0);
     }
 }
+
+.navbar-contact {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-left: auto;
+
+  a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #5b49ff;
+    text-decoration: none;
+    animation: blink 1.5s infinite;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #3e34c4;
+    }
+  }
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .navbar-contact {
+    display: none; // Hide contact info on mobile
+  }
+}
+
+.navbar-phone {
+  margin-left: 20px;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px; // bigger box
+    font-size: 18px; // larger text
+    font-family: 'Poppins', sans-serif; // modern font
+    font-weight: 700;
+    color: black;
+    font-weight: bold;
+    background: #d6bd59;
+    border-radius: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(91, 73, 255, 0.3);
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #d6bd59;
+    }
+
+    .phone-icon {
+      font-size: 20px;
+      animation: blinkIcon 1.2s infinite;
+    }
+  }
+}
+
+@keyframes blinkIcon {
+  0%   { opacity: 1; color: #fff; }
+  50%  { opacity: 0.3; color: #ffeb3b; } // yellow blink
+  100% { opacity: 1; color: #fff; }
+}
+
+@media (max-width: 768px) {
+  .navbar-phone {
+    margin-left: 10px;
+
+    a {
+      padding: 8px 14px;   // smaller padding
+      font-size: 14px;     // smaller font
+      border-radius: 8px;
+
+      .phone-icon {
+        font-size: 18px; // smaller icon
+      }
+    }
+  }
+}

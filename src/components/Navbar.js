@@ -22,14 +22,15 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.nav 
+      <motion.nav
         className="navbar"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="navbar-container">
-          <motion.div 
+          {/* Logo */}
+          <motion.div
             className="navbar-logo"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -39,8 +40,23 @@ const Navbar = () => {
             </NavLink>
           </motion.div>
 
-          <motion.div 
-            className="menu-icon" 
+          {/* Contact info */}
+         <motion.div 
+          className="navbar-phone"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          <a href="tel:+918302444432">
+            <span className="phone-icon">📞</span>
+            +91 83024 44432
+          </a>
+        </motion.div>
+
+
+          {/* Hamburger icon */}
+          <motion.div
+            className="menu-icon"
             onClick={toggleMenu}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -70,106 +86,56 @@ const Navbar = () => {
             </AnimatePresence>
           </motion.div>
 
-                  <motion.ul 
+          {/* Menu links */}
+          <motion.ul
             className={`navbar-menu ${menuOpen ? "active" : ""}`}
             initial={false}
-            animate={window.innerWidth > 768 ? "open" : (menuOpen ? "open" : "closed")}
+            animate={
+              window.innerWidth > 768 ? "open" : menuOpen ? "open" : "closed"
+            }
             variants={{
               open: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
-              closed: { opacity: 0, y: -20 }
+              closed: { opacity: 0, y: -20 },
             }}
           >
-
-            <motion.li
-              variants={{
-                open: { y: 0, opacity: 1 },
-                closed: { y: -20, opacity: 0 }
-              }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <NavLink to="/" onClick={closeMenu} end>
-                Home
-              </NavLink>
+            <motion.li variants={{ open: { y: 0, opacity: 1 }, closed: { y: -20, opacity: 0 } }} whileHover={{ scale: 1.05 }}>
+              <NavLink to="/" onClick={closeMenu} end>Home</NavLink>
             </motion.li>
-            <motion.li
-              variants={{
-                open: { y: 0, opacity: 1 },
-                closed: { y: -20, opacity: 0 }
-              }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <NavLink to="/contact" onClick={closeMenu}>
-                Contact Us
-              </NavLink>
+            <motion.li variants={{ open: { y: 0, opacity: 1 }, closed: { y: -20, opacity: 0 } }} whileHover={{ scale: 1.05 }}>
+              <NavLink to="/contact" onClick={closeMenu}>Contact Us</NavLink>
             </motion.li>
-            <motion.li
-              variants={{
-                open: { y: 0, opacity: 1 },
-                closed: { y: -20, opacity: 0 }
-              }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <NavLink to="/privacy-policy" onClick={closeMenu}>
-                Privacy Policy
-              </NavLink>
+            <motion.li variants={{ open: { y: 0, opacity: 1 }, closed: { y: -20, opacity: 0 } }} whileHover={{ scale: 1.05 }}>
+              <NavLink to="/privacy-policy" onClick={closeMenu}>Privacy Policy</NavLink>
             </motion.li>
 
-            {/* Attention-grabbing buttons */}
-            <motion.li
-              variants={{
-                open: { y: 0, opacity: 1 },
-                closed: { y: -20, opacity: 0 }
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            {/* Buttons */}
+            <motion.li variants={{ open: { y: 0, opacity: 1 }, closed: { y: -20, opacity: 0 } }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <motion.button
                 className="nav-btn job-btn animated-highlight"
                 onClick={() => openForm("job")}
-                whileHover={{ 
-                  boxShadow: "0 8px 25px rgba(255, 126, 95, 0.4)",
-                  y: -2
-                }}
+                whileHover={{ boxShadow: "0 8px 25px rgba(255, 126, 95, 0.4)", y: -2 }}
                 whileTap={{ y: 0 }}
               >
                 Find Job
               </motion.button>
             </motion.li>
-            <motion.li
-              variants={{
-                open: { y: 0, opacity: 1 },
-                closed: { y: -20, opacity: 0 }
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+
+            <motion.li variants={{ open: { y: 0, opacity: 1 }, closed: { y: -20, opacity: 0 } }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <motion.button
                 className="nav-btn pg-btn animated-highlight"
                 onClick={() => openForm("rental")}
-                whileHover={{ 
-                  boxShadow: "0 8px 25px rgba(67, 206, 162, 0.4)",
-                  y: -2
-                }}
+                whileHover={{ boxShadow: "0 8px 25px rgba(67, 206, 162, 0.4)", y: -2 }}
                 whileTap={{ y: 0 }}
               >
                 Find PG
               </motion.button>
             </motion.li>
-            <motion.li
-              variants={{
-                open: { y: 0, opacity: 1 },
-                closed: { y: -20, opacity: 0 }
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+
+            <motion.li variants={{ open: { y: 0, opacity: 1 }, closed: { y: -20, opacity: 0 } }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <motion.button
                 className="nav-btn list-btn animated-highlight"
                 onClick={() => openForm("owner")}
-                whileHover={{ 
-                  boxShadow: "0 8px 25px rgba(142, 45, 226, 0.4)",
-                  y: -2
-                }}
+                whileHover={{ boxShadow: "0 8px 25px rgba(142, 45, 226, 0.4)", y: -2 }}
                 whileTap={{ y: 0 }}
               >
                 List Your Property
@@ -183,32 +149,17 @@ const Navbar = () => {
       <AnimatePresence>
         <div className="form-container">
           {activeForm === "job" && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-            >
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 0.3 }}>
               <JobForm onClose={closeForm} />
             </motion.div>
           )}
           {activeForm === "owner" && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-            >
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 0.3 }}>
               <OwnerForm onClose={closeForm} />
             </motion.div>
           )}
           {activeForm === "rental" && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-            >
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 0.3 }}>
               <RentalForm onClose={closeForm} />
             </motion.div>
           )}
