@@ -135,7 +135,7 @@ const handleAgree = () => {
             >
               Currently available in <span className="location-notice-city">Gurugram</span> only. Stay tuned for more locations soon. 😊🏡
             </motion.p>
-            {/* <PopularProperties propertiesData={propertiesData} ids={["#001", "#003", "#004"]}/> */}
+            <PopularProperties ids={["#004", "#006", "#001"]}/>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
