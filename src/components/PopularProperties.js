@@ -68,7 +68,7 @@ const PopularProperties = ({ ids }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        🔥 Best Properties
+        Popular Properties
       </motion.h2>
       <motion.div className="popular-list">
         <Slider {...settings}>
