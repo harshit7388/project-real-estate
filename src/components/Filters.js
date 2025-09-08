@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/components/_filters.scss";
 
@@ -9,6 +9,18 @@ const Filters = ({ onFilterChange }) => {
     name: "",
     contact: "",
   });
+
+  
+ const carouselImages = [
+    require("../assets/images/headerBgImage1.png"),
+    require("../assets/images/headerBgImage2.png"),
+    require("../assets/images/headerBgImage3.png"),
+    require("../assets/images/headerBgImage4.png"),
+    require("../assets/images/headerBgImage5.png"),
+    require("../assets/images/headerBgImage6.png"),
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
   const [isContactSubmitted, setIsContactSubmitted] = useState(false);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [filters, setFilters] = useState({
@@ -18,6 +30,13 @@ const Filters = ({ onFilterChange }) => {
     livingType: "",
     amenities: [],
   });
+
+    useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % carouselImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
 
   const filterOptions = {
     location: [
@@ -109,6 +128,21 @@ const Filters = ({ onFilterChange }) => {
       initial="hidden"
       animate="visible"
     >
+        <div className="filters-carousel">
+        <AnimatePresence>
+          <motion.img
+            key={currentImage}
+            src={carouselImages[currentImage]}
+            alt="Background"
+            className="filters-bg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+          />
+        </AnimatePresence>
+      </div>
+
       <motion.div 
         className="filter-message"
         variants={itemVariants}
