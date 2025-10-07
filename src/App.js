@@ -17,8 +17,10 @@ import PropertyDetails from "./components/PropertyDetails";
 import PopularProperties from "./components/PopularProperties";
 import propertiesData from './components/PropertyList';
 import Disclaimer from "./components/Disclaimer";
+import Maintenance from "./components/Maintenance";
 
 const App = () => {
+  const isMaintenanceMode = true; // Set to true to enable maintenance mode
   const [filters, setFilters] = useState({
     location: "",
     propertyType: "",
@@ -83,6 +85,11 @@ const App = () => {
 const handleAgree = () => {
     setShowDisclaimer(false);
   };
+
+  if (isMaintenanceMode) {
+    return <Maintenance />;
+  }
+
   return (
     <Router>
       {/* <HamburgerMenu /> */}
